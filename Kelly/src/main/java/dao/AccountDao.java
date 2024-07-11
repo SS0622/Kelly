@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import bean.Account;
 
 public class AccountDao extends Dao {
+	/*
 	public boolean checkAccount(String accountId) throws Exception {
 		boolean flag = true;
 		// コネクションの確立
@@ -48,7 +49,8 @@ public class AccountDao extends Dao {
 		}
 		return flag;
 	}
-	
+	*/
+	// アカウント情報を受け取る
 	public Account get(String accountId) throws Exception {
 		// accountインスタンスを初期化
 		Account account = new Account();
@@ -98,10 +100,11 @@ public class AccountDao extends Dao {
 		}
 		return account;
 	}
-	
+	// 新規アカウントを登録
 	public boolean save(Account account) throws Exception {
 		// 既存のアカウントとIDが被っていた場合
-		if(checkAccount(account.getAccountId())) {
+		Account checkAccount = get(account.getAccountId());
+		if(checkAccount != null) {
 			return false;
 		}
 		// コネクションの確立
@@ -146,4 +149,5 @@ public class AccountDao extends Dao {
 		return true;
 	}
 
+	
 }
