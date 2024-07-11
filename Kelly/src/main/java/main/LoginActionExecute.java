@@ -29,10 +29,6 @@ public class LoginExecuteAction extends Action {
 		//DBからデータ取得 3
 		account = accountDao.get(id);//アカウントデータ取得
 
-		//ビジネスロジック 4
-		//DBへデータ保存 5
-		//レスポンス値をセット 6
-		//フォワード 7
 		//条件で手順4~7の内容が分岐
 		if (account != null && account.getPassword() == password) {// 
 			// セッション情報を取得
