@@ -3,6 +3,7 @@ package bean;
 import java.io.Serializable;
 
 public class Post implements Serializable {
+	// とりあえず、現状のpostテーブルを基に作成したものなので変更の可能性あり
 
 	//投稿ID:int
 	private int postID;
