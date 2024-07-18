@@ -2,7 +2,7 @@ package bean;
 
 import java.io.Serializable;
 
-public class Account implements Serializable {
+public class Account extends User implements Serializable {
 	private String accountId;
 	private String password;
 	private boolean admin;
