@@ -148,6 +148,4 @@ public class AccountDao extends Dao {
 		}
 		return true;
 	}
-
-	
 }
