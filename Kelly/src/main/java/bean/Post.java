@@ -12,19 +12,7 @@ public class Post implements Serializable {
 	private String accID;
 	
 	// タグ1:String
-	private String imgTag_01;
-
-	// タグ2:String
-	private String imgTag_02;
-	
-	// タグ3:String
-	private String imgTag_03;
-	
-	// タグ4:String
-	private String imgTag_04;
-	
-	// タグ5:String
-	private String imgTag_05;
+	private String[] imgTags;
 	
 	// 透過画像(手描き画像)パス:String
 	private String alphaImg;
@@ -55,46 +43,6 @@ public class Post implements Serializable {
 	
 	public void setAccID(String accid) {
 		this.accID = accid;
-	}
-
-	public String getImgTag01() {
-		return this.imgTag_01;
-	}
-	
-	public void setImgTag01(String imgtag01) {
-		this.imgTag_01 = imgtag01;
-	}
-	
-	public String getImgTag02() {
-		return this.imgTag_02;
-	}
-	
-	public void setImgTag02(String imgtag02) {
-		this.imgTag_02 = imgtag02;
-	}
-	
-	public String getImgTag03() {
-		return this.imgTag_03;
-	}
-	
-	public void setImgTag03(String imgtag03) {
-		this.imgTag_03 = imgtag03;
-	}
-	
-	public String getImgTag04() {
-		return this.imgTag_04;
-	}
-	
-	public void setImgTag04(String imgtag04) {
-		this.imgTag_04 = imgtag04;
-	}
-	
-	public String getImgTag05() {
-		return this.imgTag_05;
-	}
-	
-	public void setImgTag05(String imgtag05) {
-		this.imgTag_05 = imgtag05;
 	}
 	
 	public String getAlphaImg() {
@@ -130,7 +78,6 @@ public class Post implements Serializable {
 	}
 	
 	// beanではタグを配列で保管するという案
-	private String[] imgTags;
 	public String[] getImgTags() {
 		return imgTags;
 	}
