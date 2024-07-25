@@ -1,9 +1,5 @@
 package main; // 担当:坪山 変数はこちらが合わせます。
 
-import bean.Account;
-import bean.User;
-import dao.AccountDao;
-import dao.Dao;
 //import dao.TagDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,10 +13,9 @@ public class PostAction extends Action{
 		
 //		#session関連
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute("user");
-		
+		session.getAttribute("user");
+		/*
 //		#変数生成
-		Account account_data = null;
 		String picture_path = null;
 		
 //		#dao関連
@@ -28,7 +23,7 @@ public class PostAction extends Action{
 		Dao dao = new Dao();
 //		Dao tagdao = new TagDao();
 		String id = null;
-		account_data = accountDao.get(id);
+		account_data = accountDao.get(id);*/
 		
 		
 //		#dbアクセス(取得)
@@ -51,7 +46,7 @@ public class PostAction extends Action{
 //		req.setAttribute(pictures_id, pictures_id);
 //		req.setAttribute(title, title);
 //		req.setAttribute(date, date);
-		req.setAttribute(picture_path, picture_path);
+//		req.setAttribute(picture_path, picture_path);
 		
 		req.getRequestDispatcher("post.jsp").forward(req, res);
 	}
