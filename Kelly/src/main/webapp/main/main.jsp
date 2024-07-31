@@ -1,7 +1,6 @@
 <%@include file="../common/header.html" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
