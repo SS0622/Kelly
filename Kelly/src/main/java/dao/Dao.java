@@ -23,7 +23,7 @@ public class Dao {
 			// InitialContextを初期化
 			InitialContext ic = new InitialContext();
 			// データベースへ接続
-			ds = (DataSource) ic.lookup("java:/comp/env/jdbc/jon");
+			ds = (DataSource) ic.lookup("java:/comp/env/jdbc/Kelly");
 		}
 		// データベースへのコネクションを返却
 		return ds.getConnection();

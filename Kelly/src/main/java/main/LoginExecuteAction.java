@@ -23,14 +23,14 @@ public class LoginExecuteAction extends Action {
 		Account account = null;
 
 		//リクエストパラメータ―の取得 2
-		id = req.getParameter("id");// ユーザーID
+		id = req.getParameter("account_id");// ユーザーID
 		password = req.getParameter("password");//パスワード
 
 		//DBからデータ取得 3
 		account = accountDao.get(id);//アカウントデータ取得
 
 		//条件で手順4~7の内容が分岐
-		if (account != null && account.getPassword() == password) {// 
+		if (account != null && account.getPassword().equals(password)) {// 
 			// セッション情報を取得
 			HttpSession session = req.getSession(true);
 			// 認証済みフラグを立てる
@@ -39,9 +39,10 @@ public class LoginExecuteAction extends Action {
 			session.setAttribute("user", account);
 	
 			//リダイレクト
-			url = "main/Menu.action";
-			res.sendRedirect(url);
+			url = "Main.action";
+			req.getRequestDispatcher(url).forward(req, res);
 		} else {
+
 			// 認証失敗の場合
 			// エラーメッセージをセット
 			List<String> errors = new ArrayList<>();
