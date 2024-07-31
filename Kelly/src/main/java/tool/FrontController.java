@@ -2,33 +2,45 @@ package tool;
 
 import java.io.IOException;
 
-import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-@WebFilter(urlPatterns = { "/*" })
-public class FrontController implements Filter {
-	/**
-	 * doFilterメソッド フィルター処理を記述
-	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		// 文字コードをセット
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+@WebServlet(urlPatterns = { "*.action" })
+public class FrontController extends HttpServlet {
 
-		// System.out.println("フィルタの前処理");
-		chain.doFilter(request, response);
-		// System.out.println("フィルタの後処理");
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		try {
+			// パスを取得
+			String path = req.getServletPath().substring(1);
+			// ファイル名を取得しクラス名に変換
+			String name = path.replace(".a", "A").replace('/', '.');
+
+			System.out.println("★ servlet path -> " + req.getServletPath());
+			System.out.println("★ calss name -> " + name);
+
+			// アクションクラスのインスタンスを返却
+			Action action = (Action) Class.forName(name).getDeclaredConstructor().newInstance();
+
+			// 遷移先URLを取得
+			action.execute(req, res);
+			//String url = action.execute(req, res);
+			//req.getRequestDispatcher(url).forward(req, res);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			// エラーページへリダイレクト
+			req.getRequestDispatcher("/error.jsp").forward(req, res);
+		}
 	}
 
-	public void init(FilterConfig filterConfig) {
-	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-	public void destroy() {
+		doGet(req,res);
+
 	}
 }
