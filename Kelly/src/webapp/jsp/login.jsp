@@ -10,7 +10,7 @@
 <body>
     <div class="form-wrapper">
         <h1>ログイン</h1>
-        <form action="Login.action" method="post">
+        <form action="LoginExecute.action" method="post">
             <div class="form-item">
                 <label for="email-input">アカウントID</label>
                 <input id="email-input" type="text" name="account_id" required="required" placeholder="アカウントID">
