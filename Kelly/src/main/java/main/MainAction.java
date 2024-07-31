@@ -10,8 +10,10 @@ public class MainAction extends Action {
 	public void execute(HttpServletRequest req,HttpServletResponse res)throws Exception{
 		HttpSession session = req.getSession();
 		
+		String url = "";
 		
+		url = "main.jsp";
 		
-		req.getRequestDispatcher("main.jsp").forward(req, res);
+		req.getRequestDispatcher(url).forward(req, res);
 	}
 }
