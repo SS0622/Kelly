@@ -40,4 +40,3 @@ public class FollowDao extends Dao{
 		}
 	}
 }
-
