@@ -10,10 +10,10 @@
 <body>
     <div class="form-wrapper">
         <h1>ログイン</h1>
-        <form>
+        <form action="Login.action" method="post">
             <div class="form-item">
-                <label for="email-input">メールアドレス</label>
-                <input id="email-input" type="email" name="email" required="required" placeholder="メールアドレス">
+                <label for="email-input">アカウントID</label>
+                <input id="email-input" type="text" name="account_id" required="required" placeholder="アカウントID">
             </div>
             <div class="form-item">
                 <label for="password-input">パスワード</label>
