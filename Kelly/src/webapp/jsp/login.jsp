@@ -1,55 +1,55 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="ja">
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="../css/styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ログイン</title>
-  <script type="text/javascript">
-    $(function() {
-      // 「パスワードを表示」が変更された時の処理
-      $('#password-display').change(function() {
-        if ($(this).prop('checked')) {
-          // チェックが入っている場合
-          // パスワード入力欄をテキストにする
-          $('#password-input').attr('type', 'text');
-        } else {
-          // チェックが外れている場合
-          // パスワード入力欄をパスワードにする
-          $('#password-input').attr('type', 'password');
-        }
-      });
-    });
-  </script>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <!-- 外部CSSファイルへのリンク -->
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <div class="form-wrapper">
-    <h1>ログイン</h1>
-    <form action="LoginExecute.action" method="post">
-      <div class="form-item">
-        <label for="id-input">ＩＤ</label>
-        <input type="text" id="id-input" name="email" placeholder="ＩＤ" required>
-      </div>
-      <div class="form-item">
-        <label for="password-input">パスワード</label>
-        <input type="password" id="password-input" name="password" placeholder="パスワード" required>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label" for="password-display">
-          <input class="form-check-input" id="password-display" type="checkbox">
-          パスワードを表示
-        </label>
-      </div>
-      <div class="button-panel">
-        <input type="submit" class="button" title="ログイン" value="ログイン">
-      </div>
-    </form>
-    <div class="form-footer">
-      <p><a href="#">アカウントを作成する</a></p>
-      <p><a href="#">パスワードをお忘れですか？</a></p>
+    <div class="form-wrapper">
+        <h1>ログイン</h1>
+        <form>
+            <div class="form-item">
+                <label for="email-input">メールアドレス</label>
+                <input id="email-input" type="email" name="email" required="required" placeholder="メールアドレス">
+            </div>
+            <div class="form-item">
+                <label for="password-input">パスワード</label>
+                <input id="password-input" type="password" name="password" required="required" placeholder="パスワード">
+                <div>
+                    <input id="password-display" type="checkbox">
+                    <label for="password-display">パスワードを表示</label>
+                </div>
+            </div>
+            <div class="button-panel">
+                <input type="submit" class="button" title="サインイン" value="サインイン">
+            </div>
+        </form>
+        <div class="form-footer">
+            <p><a href="#">アカウントを作成する</a></p>
+            <p><a href="#">パスワードを忘れた場合</a></p>
+        </div>
     </div>
-  </div>
+
+    <!-- JavaScriptコード -->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var passwordInput = document.getElementById('password-input');
+            var passwordDisplay = document.getElementById('password-display');
+
+            // 「パスワードを表示」が変更された時の処理
+            passwordDisplay.addEventListener('change', function() {
+                if (passwordDisplay.checked) {
+                    // チェックが入っている場合、パスワード入力欄をテキストにする
+                    passwordInput.type = 'text';
+                } else {
+                    // チェックが外れている場合、パスワード入力欄をパスワードにする
+                    passwordInput.type = 'password';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
