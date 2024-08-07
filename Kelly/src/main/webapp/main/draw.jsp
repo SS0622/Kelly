@@ -6,10 +6,15 @@
 </head>
 <body>
 <%--メッセージの出力  --%>
-
-<form action="Logout.action" method="post">
-	<div id="canvas_area">
-		<canvas>
+<div id="canvas_area">
+	<form action="Logout.action" method="post">
+	<%-- 機能テスト専用 --%>
+	<button id="t1" value="omakase">機能テスト1</button>
+	<button id="t2" value="suruyo">機能テスト2</button>
+	<a href="#">必要に応じて書き換えてください</a>
+	<%-- 以下試作段階です エラーする可能性があります
+	テストのために書き換えたい場合、チャットに告知下さい --%>	
+	<canvas>
 			<nav id="pallet">
 				<label for="colorPicker">Color:</label>
 				<input type="color" id="colorPicker">
@@ -21,8 +26,8 @@
 			<button id="saveBtnUsingDownload">ライブラリーに保存して戻る</button>
 			<hr>		
 		</canvas>
-	</div>
-</form>
+	</form>
+</div>
 <script>
 class CanvasDrawer {
     constructor(canvasId) {
