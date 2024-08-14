@@ -22,14 +22,14 @@ public class SignUpExecuteAction extends Action {
 		String accountName = "";
 		AccountDao accountDao = new AccountDao();
 		Account checkAccount = null;
-		Account saveAccount = null;
+		Account saveAccount = new Account();
 		Account successAccount = null;
 		String error = "";
 		
-		id = req.getParameter("id");
+		id = req.getParameter("userId");
 		password = req.getParameter("password");
 		accountName = req.getParameter("account_name");
-		mail = req.getParameter("mail");
+		mail = req.getParameter("email");
 		
 		checkAccount = accountDao.get(id);
 		
@@ -38,6 +38,8 @@ public class SignUpExecuteAction extends Action {
 			saveAccount.setPassword(password);
 			saveAccount.setAccountName(accountName);
 			saveAccount.setMail(mail);
+			
+			System.out.println(saveAccount.getAccountId());
 			
 			flag = accountDao.save(saveAccount);
 			
@@ -51,11 +53,14 @@ public class SignUpExecuteAction extends Action {
 				session.setAttribute("user", successAccount);
 		
 				//リダイレクト
-				url = "main/Menu.action";
-				res.sendRedirect(url);
-			} else {
-				error = "存在するアカウントIDです";
+				url = "Main.action";
+				req.getRequestDispatcher(url).forward(req, res);
 			}
+		} else {
+			error = "存在するアカウントIDです";
+			req.setAttribute("error", error);
+			url = "new_account.jsp";
+			req.getRequestDispatcher(url).forward(req, res);
 		}
 		
 	}

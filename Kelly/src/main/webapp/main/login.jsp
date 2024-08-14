@@ -28,7 +28,7 @@
             </div>
         </form>
         <div class="form-footer">
-            <p><a href="#">アカウントを作成する</a></p>
+            <p><a href="SignUp.action">アカウントを作成する</a></p>
             <p><a href="#">パスワードを忘れた場合</a></p>
         </div>
     </div>

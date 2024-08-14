@@ -125,7 +125,7 @@ public class AccountDao extends Dao {
 			
 
 			// プリペアードステートメントを実行
-			statement.executeQuery();
+			statement.executeUpdate();
 		} catch (Exception e) {
 			throw e;
 		} finally {

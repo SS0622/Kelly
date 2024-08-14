@@ -9,6 +9,6 @@ public class SignUpAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) 
 			throws Exception {
 		
-		req.getRequestDispatcher("sign_up.jsp").forward(req, res);
+		req.getRequestDispatcher("new_account.jsp").forward(req, res);
 	}
 }

@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h2>新規アカウント登録</h2>
-        <form action="register.jsp" method="post">
+        <form action="SignUpExecute.action" method="post">
             <label for="userId">ユーザーID:</label>
             <input type="text" id="userId" name="userId" required><br>
 
