@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import bean.Follow;
 
 public class FollowDao extends Dao{
-	public Follow get(String accountId,String followId)throws Exception {
+	public Follow get(String accountId) throws Exception {
 		Follow follow = new Follow();
 		Connection connection = getConnection();
 		
@@ -18,7 +18,12 @@ public class FollowDao extends Dao{
 			statement = connection.prepareStatement("select * from FOLLOW where = account_id=?");
 			statement.setString(1,accountId);
 			ResultSet rSet = statement.executeQuery();
-			
+			if(rSet.next()) {
+				follow.setAccountId(rSet.getString("accunt_id"));
+				follow.setFollowId(rSet.getString("follow_id"));
+			} else {
+				follow = null;
+			}
 		}catch(Exception e) {
 			throw e;
 		}finally {
@@ -38,5 +43,6 @@ public class FollowDao extends Dao{
 				}
 			}
 		}
+		return follow;
 	}
 }
