@@ -19,22 +19,9 @@ public class PostExecuteAction extends Action{
 		
 //		#変数生成
 		boolean success=false;
-		Post post = new Post();
-		String alpha = req.getParameter("picture1");
-		String base = req.getParameter("pictere2");
-		String title = req.getParameter("title");
-		String caption = req.getParameter("caption");
-		String[] tags = req.getParameterValues("tags");
+		Post post = (Post) req.getAttribute("post");
 		
-//		#dao関連
 		PostDao postDao = new PostDao();
-		
-		post.setAccID(account.getAccountId());
-		post.setAlphaImg(alpha);
-		post.setBaseImg(base);
-		post.setTitle(title);
-		post.setCaption(caption);
-		post.setImgTags(tags);
 		
 //		#dbアクセス(保存)
 		success = postDao.save(post);

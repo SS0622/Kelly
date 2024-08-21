@@ -13,7 +13,7 @@
  
         <!-- 投稿ページへ飛ぶボタン -->
         <div class="button-panel">
-            <a href="post.jsp" class="button">投稿ページへ</a>
+            <a href="Post.action" class="button">投稿ページへ</a>
         </div>
  
         <hr>
