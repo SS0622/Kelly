@@ -119,86 +119,123 @@ public class PostDao extends Dao{
 	}
 	
 	// タグ検索
-	public ArrayList<Post> search(ArrayList<String> tags) throws Exception{
-
+	public ArrayList<Post> search(ArrayList<String> tags,String order,String mode) throws Exception{
+		// 返すための変数を用意
 		ArrayList<Post> postList = new ArrayList<>();
-		
 		// コネクションの確立
 		Connection connection = getConnection();
-		
+		// プリペアードステートメント
 		PreparedStatement statement = null;
+		// リザルトセット
+		ResultSet rSet=null;
 		
+		// SQL文作成
 		StringBuilder TAGsql = new StringBuilder("");
-		int siz = 0;
-		
-		for(String tag : tags) {
-			if(siz == 0) {
-				TAGsql.append(" where ");
-			}else{
-				TAGsql.append(" and ");
+		// 送られてきたタグリストがNULLでなく、中身があればSQLを作成
+		if (tags == null || tags.size() == 0) {
+		}else if (mode.equals("1")||mode.equals("2")) {
+			// タグ検索
+			TAGsql.append(" where ");
+			int count = 0;
+			for(String tag : tags) {
+				count+=1;
+				TAGsql.append("COALESCE(TAG_1,' ')||' '||COALESCE(TAG_2,' ')||' '||COALESCE(TAG_3,' ')||' '||COALESCE(TAG_4,' ')||' '||COALESCE(TAG_5,' ') LIKE '%"+tag+"%'");
+				if (count<tags.size()) {
+					// 引数modeが"1"ならOR検索をし、"2"ならAND検索する
+					if (mode.equals("1")) {
+						TAGsql.append(" or ");
+					}else if(mode.equals("2")) {
+						TAGsql.append(" and ");
+					}
+				}
 			}
-			TAGsql.append("(TAG_1 = ");
-			TAGsql.append(tag);
-			TAGsql.append(" or TAG_2 = ");
-			TAGsql.append(tag);
-			TAGsql.append(" or TAG_3 = ");
-			TAGsql.append(tag);
-			TAGsql.append(" or TAG_4 = ");
-			TAGsql.append(tag);
-			TAGsql.append(" or TAG_5 = ");
-			TAGsql.append(tag);
-			TAGsql.append(")");
-			
-			 //(TAG_1 = ? or TAG_2 = ? or TAG_3 = ? or TAG_4 = ? or TAG_5 = ?)
+		}else if (mode.equals("3")||mode.equals("4")) {
+			// タイトル検索
+			TAGsql.append(" where ");
+			int count = 0;
+			for(String tag : tags) {
+				count+=1;
+				TAGsql.append("TITLE LIKE '%"+tag+"%'");
+				if (count<tags.size()) {
+					// 引数modeが"3"ならOR検索をし、"4"ならAND検索する
+					if (mode.equals("3")) {
+						TAGsql.append(" or ");
+					}else if(mode.equals("4")) {
+						TAGsql.append(" and ");
+					}
+				}
+			}
+		}else {
+			// キャプション検索
+			TAGsql.append(" where ");
+			int count = 0;
+			for(String tag : tags) {
+				count+=1;
+				TAGsql.append("CAPTION LIKE '%"+tag+"%'");
+				if (count<tags.size()) {
+					// 引数modeが"5"ならOR検索をし、"6"ならAND検索する
+					if (mode.equals("5")) {
+						TAGsql.append(" or ");
+					}else if(mode.equals("6")) {
+						TAGsql.append(" and ");
+					}
+				}
+			}
 		}
-		
-		try {
-			statement = connection.prepareStatement("select * from POST" + TAGsql);
+		// 引数orderが"1"なら投稿日が新しい順、"2"なら古い順
+		if (order.equals("1")) {
+			TAGsql.append(" ORDER BY CREATED_AT DESC");
+		}else if(mode.equals("2")) {
+			TAGsql.append(" ORDER BY CREATED_AT ASC");
+		}
+		try{
+			//検索開始
+			statement=connection.prepareStatement("select * from POST" + TAGsql);
+			rSet=statement.executeQuery();
 			
-			ResultSet rSet = statement.executeQuery();
-			
-			if(rSet.next()) {
-				Post post = new Post();
-				String[] tagList = new String[] {null, null, null, null, null};
-				post.setPostID(rSet.getInt("post_id"));
-				post.setAccID(rSet.getString("account_id"));
-				
-				tagList[0]=rSet.getString("tag_1");
-				tagList[1]=rSet.getString("tag_2");
-				tagList[2]=rSet.getString("tag_3");
-				tagList[3]=rSet.getString("tag_4");
-				tagList[4]=rSet.getString("tag_5");
-				
-				post.setImgTags(tagList);
-				post.setAlphaImg(rSet.getString("picture_1"));
-				post.setBaseImg(rSet.getString("picture_2"));
-				post.setTitle(rSet.getString("title"));
-				post.setCaption(rSet.getString("caption"));
-				
-				postList.add(post);
+			//検索結果の整形
+			while(rSet.next()){
+				Post p = new Post();
+				String[] tagstrs = new String[5];
+				p.setPostID(rSet.getInt("POST_ID"));
+				p.setAccID(rSet.getString("ACCOUNT_ID"));
+				tagstrs[0]=rSet.getString("TAG_1");
+				tagstrs[1]=rSet.getString("TAG_2");
+				tagstrs[2]=rSet.getString("TAG_3");
+				tagstrs[3]=rSet.getString("TAG_4");
+				tagstrs[4]=rSet.getString("TAG_5");
+				p.setImgTags(tagstrs);
+				p.setAlphaImg(rSet.getString("PICTURE_1"));
+				p.setBaseImg(rSet.getString("PICTURE_2"));
+				p.setTitle(rSet.getString("TITLE"));
+				p.setCaption(rSet.getString("CAPTION"));
+				//リストに追加
+				postList.add(p);
 			}
-			
-		} catch (Exception e) {
+		}
+		catch (Exception e){
 			throw e;
-		} finally {
+		}
+		finally{
 			// プリペアードステートメントを閉じる
-			if (statement != null) {
-				try {
+			if (statement != null){
+				try{
 					statement.close();
-				} catch (SQLException sqle) {
+				}
+				catch(SQLException sqle){
 					throw sqle;
 				}
 			}
 			// コネクションを閉じる
-			if (connection != null) {
-				try {
+			if (connection != null){
+				try{
 					connection.close();
-				} catch (SQLException sqle) {
+				}
+				catch(SQLException sqle){
 					throw sqle;
 				}
 			}
 		}
-		
 		return postList;
 	}
 	
