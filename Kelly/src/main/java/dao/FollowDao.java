@@ -20,7 +20,7 @@ public class FollowDao extends Dao{
 		// リザルトセット
 		ResultSet rSet=null;
 		try {
-			statement = connection.prepareStatement("select * from FOLLOW where = account_id=?");
+			statement = connection.prepareStatement("select * from FOLLOW where account_id=?");
 			statement.setString(1, accountId);
 			rSet=statement.executeQuery();
 			//検索結果の整形
