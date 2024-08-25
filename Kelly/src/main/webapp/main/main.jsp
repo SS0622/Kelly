@@ -15,6 +15,9 @@
         <div class="button-panel">
             <a href="Post.action" class="button">投稿ページへ</a>
         </div>
+        <div class="button-panel">
+            <a href="PostSearch.action" class="button">作品を検索する</a>
+        </div>
         <c:forEach var="post" items="${postList}">
         	<img src="${post.getBaseImg() }" alt="img_path" >
    		</c:forEach>
