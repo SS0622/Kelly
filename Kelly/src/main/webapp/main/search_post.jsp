@@ -11,7 +11,7 @@
 		<section>
 			<div>
 				<form action="PostSearchExecute.action" method="get">
-					<label for="textbox">入学年度</label>
+					<label for="textbox">検索ワード</label>
 					<input type="text" name="input_txt" id="textbox" value="${txtboxstr}">
 					<label for="order_select">並び順</label>
 					<select name="order" id="order_select">
