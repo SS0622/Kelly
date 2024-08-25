@@ -12,7 +12,7 @@
 			<c:if test="${follower_list.size()>=0}">
 				<div>あなたをフォローしている人数:${follower_list.size()}人</div>
 				<div>
-					<c:forEach var="follow" items="${follower_list}" varStatus="info">
+					<c:forEach var="follower" items="${follower_list}" varStatus="info">
 						<div>
 							<p>=====================================================================================</p>
 							<h3>${info.index}</h3>
