@@ -19,7 +19,7 @@
             <a href="PostSearch.action" class="button">作品を検索する</a>
         </div>
         <c:forEach var="post" items="${postList}">
-        	<img src="${post.getBaseImg() }" >
+        	<img src="${post.getBaseImg() }" alt="img_path" >
    		</c:forEach>
  
         <hr>
