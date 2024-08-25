@@ -7,16 +7,7 @@
     <title>ログ表示</title>
 </head>
 <body>
-    <h1>ログ</h1>
-    <pre>
-        <%
-            List<String> logs = (List<String>) request.getAttribute("logs");
-            if (logs != null) {
-                for (String log : logs) {
-                    out.println(log + "<br>");
-                }
-            }
-        %>
-    </pre>
+    <h1>エラーが発生しました</h1>
+    <p>${e_m}<p
 </body>
 </html>
