@@ -21,7 +21,7 @@ public class PostDao extends Dao{
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("insert into POST(ACCOUNT_ID,TAG_1,TAG_2,"
 					+ "TAG_3,TAG_4,TAG_5,PICTURE_1,PICTURE_2,TITLE,CAPTION)"
-					+ " VALUES ('?','?','?','?','?','?','?','?','?','?')");
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?)");
 			// プリペアードステートメントにアカウントIDをバインド
 			statement.setString(1, post.getAccID());
 			statement.setString(2, post.getImgTags()[0]);
@@ -216,23 +216,23 @@ public class PostDao extends Dao{
 					+ "FROM (\r\n"
 					+ "    SELECT TAG_1 AS TAGS, CREATED_AT\r\n"
 					+ "    FROM POST\r\n"
-					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    WHERE ACCOUNT_ID = ?\r\n"
 					+ "    UNION ALL\r\n"
 					+ "    SELECT TAG_2 AS TAGS, CREATED_AT\r\n"
 					+ "    FROM POST\r\n"
-					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    WHERE ACCOUNT_ID = ?\r\n"
 					+ "    UNION ALL\r\n"
 					+ "    SELECT TAG_3 AS TAGS, CREATED_AT\r\n"
 					+ "    FROM POST\r\n"
-					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    WHERE ACCOUNT_ID = ?\r\n"
 					+ "    UNION ALL\r\n"
 					+ "    SELECT TAG_4 AS TAGS, CREATED_AT\r\n"
 					+ "    FROM POST\r\n"
-					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    WHERE ACCOUNT_ID = ?\r\n"
 					+ "    UNION ALL\r\n"
 					+ "    SELECT TAG_5 AS TAGS, CREATED_AT\r\n"
 					+ "    FROM POST\r\n"
-					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    WHERE ACCOUNT_ID = ?\r\n"
 					+ ") AS CombinedTags\r\n"
 					+ "GROUP BY TAGS\r\n"
 					+ "ORDER BY CREATED_AT DESC;");
