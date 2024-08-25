@@ -273,7 +273,7 @@ public class PostDao extends Dao{
 		
 		return tagsList;
 	}
-	public ArrayList<Post> search2(ArrayList<String> tags,String order,String mode) throws Exception{
+	public ArrayList<Post> search(ArrayList<String> tags,String order,String mode) throws Exception{
 		// 返すための変数を用意
 		ArrayList<Post> postList = new ArrayList<>();
 		// コネクションの確立
