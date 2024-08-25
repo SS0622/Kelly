@@ -21,7 +21,7 @@ public class PostDao extends Dao{
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("insert into POST(ACCOUNT_ID,TAG_1,TAG_2,"
 					+ "TAG_3,TAG_4,TAG_5,PICTURE_1,PICTURE_2,TITLE,CAPTION)"
-					+ " VALUES (?,?,?,?,?,?,?,?,?,?)");
+					+ " VALUES ('?','?','?','?','?','?','?','?','?','?')");
 			// プリペアードステートメントにアカウントIDをバインド
 			statement.setString(1, post.getAccID());
 			statement.setString(2, post.getImgTags()[0]);
@@ -35,7 +35,7 @@ public class PostDao extends Dao{
 			statement.setString(10, post.getCaption());
 			
 			// プリペアードステートメントを実行
-			statement.executeUpdate();
+			statement.executeQuery();
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -119,7 +119,161 @@ public class PostDao extends Dao{
 	}
 	
 	// タグ検索
-	public ArrayList<Post> search(ArrayList<String> tags,String order,String mode) throws Exception{
+	public ArrayList<Post> search(ArrayList<String> tags) throws Exception{
+
+		ArrayList<Post> postList = new ArrayList<>();
+		
+		// コネクションの確立
+		Connection connection = getConnection();
+		
+		PreparedStatement statement = null;
+		
+		StringBuilder TAGsql = new StringBuilder("");
+		int siz = 0;
+		
+		for(String tag : tags) {
+			if(siz == 0) {
+				TAGsql.append(" where ");
+			}else{
+				TAGsql.append(" and ");
+			}
+			TAGsql.append("(TAG_1 = ");
+			TAGsql.append(tag);
+			TAGsql.append(" or TAG_2 = ");
+			TAGsql.append(tag);
+			TAGsql.append(" or TAG_3 = ");
+			TAGsql.append(tag);
+			TAGsql.append(" or TAG_4 = ");
+			TAGsql.append(tag);
+			TAGsql.append(" or TAG_5 = ");
+			TAGsql.append(tag);
+			TAGsql.append(")");
+			
+			 //(TAG_1 = ? or TAG_2 = ? or TAG_3 = ? or TAG_4 = ? or TAG_5 = ?)
+		}
+		
+		try {
+			statement = connection.prepareStatement("select * from POST" + TAGsql);
+			
+			ResultSet rSet = statement.executeQuery();
+			
+			if(rSet.next()) {
+				Post post = new Post();
+				String[] tagList = new String[] {null, null, null, null, null};
+				post.setPostID(rSet.getInt("post_id"));
+				post.setAccID(rSet.getString("account_id"));
+				
+				tagList[0]=rSet.getString("tag_1");
+				tagList[1]=rSet.getString("tag_2");
+				tagList[2]=rSet.getString("tag_3");
+				tagList[3]=rSet.getString("tag_4");
+				tagList[4]=rSet.getString("tag_5");
+				
+				post.setImgTags(tagList);
+				post.setAlphaImg(rSet.getString("picture_1"));
+				post.setBaseImg(rSet.getString("picture_2"));
+				post.setTitle(rSet.getString("title"));
+				post.setCaption(rSet.getString("caption"));
+				
+				postList.add(post);
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		
+		return postList;
+	}
+	
+	// ユーザーのタグ履歴を取得
+	public ArrayList<String> tagHistory(String account_id) throws Exception{
+		ArrayList<String> tagsList = new ArrayList<>();
+		// コネクションの確立
+		Connection connection = getConnection();
+		
+		PreparedStatement statement = null;
+		
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("SELECT TAGS, MAX(CREATED_AT) AS CREATED_AT\r\n"
+					+ "FROM (\r\n"
+					+ "    SELECT TAG_1 AS TAGS, CREATED_AT\r\n"
+					+ "    FROM POST\r\n"
+					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    UNION ALL\r\n"
+					+ "    SELECT TAG_2 AS TAGS, CREATED_AT\r\n"
+					+ "    FROM POST\r\n"
+					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    UNION ALL\r\n"
+					+ "    SELECT TAG_3 AS TAGS, CREATED_AT\r\n"
+					+ "    FROM POST\r\n"
+					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    UNION ALL\r\n"
+					+ "    SELECT TAG_4 AS TAGS, CREATED_AT\r\n"
+					+ "    FROM POST\r\n"
+					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ "    UNION ALL\r\n"
+					+ "    SELECT TAG_5 AS TAGS, CREATED_AT\r\n"
+					+ "    FROM POST\r\n"
+					+ "    WHERE ACCOUNT_ID = '?'\r\n"
+					+ ") AS CombinedTags\r\n"
+					+ "GROUP BY TAGS\r\n"
+					+ "ORDER BY CREATED_AT DESC;");
+			// プリペアードステートメントにアカウントIDをバインド
+			statement.setString(1, account_id);
+			statement.setString(2, account_id);
+			statement.setString(3, account_id);
+			statement.setString(4, account_id);
+			statement.setString(5, account_id);
+			
+			// プリペアードステートメントを実行
+			ResultSet rSet = statement.executeQuery();
+			
+			if (rSet.next()) {
+				tagsList.add(rSet.getString("TAGS"));
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		
+		return tagsList;
+	}
+	public ArrayList<Post> search2(ArrayList<String> tags,String order,String mode) throws Exception{
 		// 返すための変数を用意
 		ArrayList<Post> postList = new ArrayList<>();
 		// コネクションの確立
@@ -237,77 +391,5 @@ public class PostDao extends Dao{
 			}
 		}
 		return postList;
-	}
-	
-	// ユーザーのタグ履歴を取得
-	public ArrayList<String> tagHistory(String account_id) throws Exception{
-		ArrayList<String> tagsList = new ArrayList<>();
-		// コネクションの確立
-		Connection connection = getConnection();
-		
-		PreparedStatement statement = null;
-		
-		try {
-			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("SELECT TAGS, MAX(CREATED_AT) AS CREATED_AT\r\n"
-					+ "					FROM (\r\n"
-					+ "					SELECT TAG_1 AS TAGS, CREATED_AT\r\n"
-					+ "					FROM POST\r\n"
-					+ "					WHERE ACCOUNT_ID = ?\r\n"
-					+ "					UNION ALL\r\n"
-					+ "					SELECT TAG_2 AS TAGS, CREATED_AT\r\n"
-					+ "					FROM POST\r\n"
-					+ "					WHERE ACCOUNT_ID = ?\r\n"
-					+ "					UNION ALL\r\n"
-					+ "					SELECT TAG_3 AS TAGS, CREATED_AT\r\n"
-					+ "					FROM POST\r\n"
-					+ "					WHERE ACCOUNT_ID = ?\r\n"
-					+ "					UNION ALL\r\n"
-					+ "					SELECT TAG_4 AS TAGS, CREATED_AT\r\n"
-					+ "					FROM POST\r\n"
-					+ "					WHERE ACCOUNT_ID = ?\r\n"
-					+ "					UNION ALL\r\n"
-					+ "					SELECT TAG_5 AS TAGS, CREATED_AT\r\n"
-					+ "					FROM POST\r\n"
-					+ "					WHERE ACCOUNT_ID = ?\r\n"
-					+ "					) AS CombinedTags\r\n"
-					+ "					GROUP BY TAGS\r\n"
-					+ "					ORDER BY CREATED_AT DESC;");
-			// プリペアードステートメントにアカウントIDをバインド
-			statement.setString(1, account_id);
-			statement.setString(2, account_id);
-			statement.setString(3, account_id);
-			statement.setString(4, account_id);
-			statement.setString(5, account_id);
-			
-			// プリペアードステートメントを実行
-			ResultSet rSet = statement.executeQuery();
-			
-			if (rSet.next()) {
-				tagsList.add(rSet.getString("TAGS"));
-			}
-			
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			// プリペアードステートメントを閉じる
-			if (statement != null) {
-				try {
-					statement.close();
-				} catch (SQLException sqle) {
-					throw sqle;
-				}
-			}
-			// コネクションを閉じる
-			if (connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException sqle) {
-					throw sqle;
-				}
-			}
-		}
-		
-		return tagsList;
 	}
 }
