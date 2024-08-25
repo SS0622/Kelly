@@ -8,9 +8,8 @@ import java.sql.SQLException;
 import bean.Account;
 
 public class AccountDao extends Dao {
-	/*
-	public boolean checkAccount(String accountId) throws Exception {
-		boolean flag = true;
+
+	public void update(Account account) throws Exception {
 		// コネクションの確立
 		Connection connection = getConnection();
 		
@@ -18,15 +17,13 @@ public class AccountDao extends Dao {
 		
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from ACCOUNT where account_id=?");
+			statement = connection.prepareStatement("update ACCOUNT set ACCOUNT_NAME=?, ICON_PATH=? where ACCOUNT_ID=?");
 			// プリペアードステートメントにアカウントIDをバインド
-			statement.setString(1, accountId);
+			statement.setString(1, account.getAccountName());
+			statement.setString(2, account.getIconPath());
+			statement.setString(3, account.getAccountId());
 			// プリペアードステートメントを実行
-			ResultSet rSet = statement.executeQuery();
-			//アカウントが存在していた場合falseを返す
-			if(rSet.next()) {
-				flag = false;
-			}
+			statement.executeUpdate();
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -47,9 +44,7 @@ public class AccountDao extends Dao {
 				}
 			}
 		}
-		return flag;
 	}
-	*/
 	// アカウント情報を受け取る
 	public Account get(String accountId) throws Exception {
 		// accountインスタンスを初期化
