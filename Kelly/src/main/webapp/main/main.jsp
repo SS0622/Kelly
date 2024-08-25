@@ -15,6 +15,9 @@
         <div class="button-panel">
             <a href="Post.action" class="button">投稿ページへ</a>
         </div>
+        <c:forEach var="post" items="${postList}">
+        	<img src="${post.getBaseImg() }" >
+   		</c:forEach>
  
         <hr>
  
