@@ -3,18 +3,20 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Account;
 import bean.Post;
 import dao.PostDao;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class PostSearchExecuteAction extends Action{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-//		HttpSession session = req.getSession();
-//		Account account = (Account)session.getAttribute("user");
-//		System.out.println(account.getAccountName()+"さんが検索を実行");
+		HttpSession session = req.getSession();
+		Account account = (Account)session.getAttribute("user");
+		System.out.println(account.getAccountName()+"さんが検索を実行");
 		
 		// 送信された入力の格納用
 		String inputTxt=""; // 入力された検索内容
