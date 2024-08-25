@@ -56,7 +56,7 @@ public class AccountDao extends Dao {
 		
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from ACCOUNT where account_id=?");
+			statement = connection.prepareStatement("select * from ACCOUNT where account_id=? and withdrawal=FALSE");
 			// プリペアードステートメントにアカウントIDをバインド
 			statement.setString(1, accountId);
 			// プリペアードステートメントを実行
