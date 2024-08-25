@@ -23,6 +23,9 @@ public class MainAction extends Action {
 		String url = "";
 		
 		url = "main.jsp";
+		for(int i=0;i<postList.size();i++) {
+			System.out.println(postList.get(i));
+		}
 		
 		req.setAttribute("postList", postList);
 		
