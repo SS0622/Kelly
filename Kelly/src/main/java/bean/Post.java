@@ -25,6 +25,9 @@ public class Post implements Serializable {
 	
 	// キャプション
 	private String caption;
+	
+	// アカウント情報
+	private Account accData;
 
 	/**
 	 * 以下 ゲッター、セッター
@@ -85,6 +88,13 @@ public class Post implements Serializable {
 		this.imgTags = imgtags;
 	}
 	
+	public Account getAccData() {
+		return this.accData;
+	}
+	
+	public void setAccData(Account account) {
+		this.accData = account;
+	}
 }
 
 
