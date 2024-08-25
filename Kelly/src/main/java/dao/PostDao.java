@@ -35,7 +35,7 @@ public class PostDao extends Dao{
 			statement.setString(10, post.getCaption());
 			
 			// プリペアードステートメントを実行
-			statement.executeQuery();
+			statement.executeUpdate();
 		} catch (Exception e) {
 			throw e;
 		} finally {
