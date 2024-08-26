@@ -56,7 +56,7 @@ public class PostFile extends HttpServlet {
 		String uniqueFileName2= UUID.randomUUID().toString() + "_" + originalFileName2;
 		
 		// ファイルの保存先
-		Path uploadPath = Paths.get("C:/upload");
+		Path uploadPath = Paths.get("/var/www/picture");// C:/upload
 		
         // 保存先ディレクトリが存在しない場合は作成
         if (!Files.exists(uploadPath)) {
