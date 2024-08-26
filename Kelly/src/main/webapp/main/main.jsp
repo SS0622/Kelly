@@ -35,16 +35,7 @@
         <hr>
  
         <!-- 他人のアカウントのアイコンとフォロワーの投稿やおすすめの投稿 -->
-        <h2>フォロワーの投稿やおすすめの投稿</h2>
-        <c:forEach var="post" items="${posts}">
-            <div class="post">
-                <a href="profile.jsp?username=${post.username}">
-                    <img src="${post.icon}" alt="icon" class="icon">
-                </a>
-                <span class="username">${post.username}</span>
-                <div class="content">${post.content}</div>
-            </div>
-        </c:forEach>
+
     </div>
 </body>
 </html>

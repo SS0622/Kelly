@@ -37,9 +37,8 @@ public class PostFile extends HttpServlet {
         String[] tags = req.getParameterValues("tags[]");
         
 	    try {
-			picture1 = req.getPart("picture1");
 			picture2 = req.getPart("picture2");
-	        if (picture1 == null || picture2 == null) {
+	        if (picture2 == null) {
 	            req.getRequestDispatcher("post.jsp").forward(req,  res);
 	        }
 	        
@@ -50,8 +49,6 @@ public class PostFile extends HttpServlet {
 	    }
 		
 		// UUID を生成してファイル名に追加
-		String originalFileName1 = picture1.getSubmittedFileName();
-		String uniqueFileName1 = UUID.randomUUID().toString() + "_" + originalFileName1;
 		String originalFileName2 = picture2.getSubmittedFileName();
 		String uniqueFileName2= UUID.randomUUID().toString() + "_" + originalFileName2;
 		
@@ -64,15 +61,13 @@ public class PostFile extends HttpServlet {
         }
 
         // 保存先ファイルの完全なパスを生成
-        Path filePath1 = uploadPath.resolve(uniqueFileName1);
         Path filePath2 = uploadPath.resolve(uniqueFileName2);
 
         // ファイルを指定されたパスに保存
-        picture1.write(filePath1.toString());
         picture2.write(filePath2.toString());
 	
 		post.setAccID(account.getAccountId());
-		post.setAlphaImg("../upload/"+uniqueFileName1.toString());
+		post.setAlphaImg("../upload/");
 		post.setBaseImg("../upload/"+uniqueFileName2.toString());
 		post.setTitle(title);
 		post.setCaption(caption);
