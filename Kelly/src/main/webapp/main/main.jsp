@@ -22,10 +22,12 @@
         </div>
         <%
         	List<Post> postList = (List<Post>) request.getAttribute("postList");
-        	for(int i=0;i<postList.size();i++){
+        	if(postList != null){
+        		for(int i=0;i<postList.size();i++){
         %>
         <img src="<%=postList.get(i).getBaseImg() %>" alt="img alt"><br>
         <%
+        		}
         	}
         %>
  
