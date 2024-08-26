@@ -26,7 +26,7 @@
         		System.out.print("a");
         		for(int i=0;i<postList.size();i++){
         %>
-        <img src="<%=postList.get(i).getBaseImg() %>" alt="img alt"><br>
+        <img src="<%=postList.get(i).getBaseImg() %>?timestamp=<%= System.currentTimeMillis() %>" alt="img alt"><br>
         <%
         		}
         	}
