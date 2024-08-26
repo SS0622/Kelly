@@ -7,7 +7,6 @@
 	    <h2>画像を選択してください</h2>
 	    <!-- 画像ファイルを選択するための入力フォーム -->
 	    <form action="PostFile" method="post" enctype="multipart/form-data">
-	        <input type="file" name="picture1" accept="image/*">
 	        <input type="file" name="picture2" accept="image/*">
 	        <h3>画像のタイトル</h3>
 	        <input type="text" name="title" value="title"><br>

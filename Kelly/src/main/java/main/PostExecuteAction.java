@@ -27,7 +27,7 @@ public class PostExecuteAction extends Action{
 		success = postDao.save(post);
 		
 		if(success) {
-			req.getRequestDispatcher("home.jsp").forward(req, res);
+			req.getRequestDispatcher("main.jsp").forward(req, res);
 		}else {
 			req.getRequestDispatcher("post.jsp").forward(req, res);
 		}
