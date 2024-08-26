@@ -54,7 +54,7 @@ public class PostFile extends HttpServlet {
 		
 		// ファイルの保存先
 		Path uploadPath = Paths.get("C:/Users/ebinuma/git/Kelly2/Kelly/src/main/webapp/upload");// C:/upload
-		
+									// /home/lg/tomcat/tomcat10/webapps/Kelly/upload
         // 保存先ディレクトリが存在しない場合は作成
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
