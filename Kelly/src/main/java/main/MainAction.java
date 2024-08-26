@@ -17,14 +17,16 @@ public class MainAction extends Action {
 		PostDao postDao = new PostDao();
 		ArrayList<Post> postList = new ArrayList<Post>();
 		ArrayList<String> tag = new ArrayList<String>();
+		String orderStr="1"; // 選択された並び順
+		String modeStr="1"; // 選択された検索方法
 		
-		postList = postDao.search(tag);
+		postList = postDao.search(tag,orderStr,modeStr);
 		
 		String url = "";
 		
 		url = "main.jsp";
 		for(int i=0;i<postList.size();i++) {
-			System.out.println(1);
+			System.out.println(i);
 			System.out.println(postList.get(i));
 		}
 		System.out.println(postList.get(0).getBaseImg());
