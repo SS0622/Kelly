@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+<%@ page import="java.util.ArrayList,java.util.List,bean.Post" %>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -29,31 +31,27 @@
 					</select>
 					<button id="search-button">検索</button>
 				</form>
-			</div>
-				<c:choose>
-					<c:when test="${get_posts.size()>=0}">
-						<div>検索結果:${get_posts.size()}件</div>
-						<div>
-							<c:forEach var="post" items="${get_posts}" varStatus="info">
-								<div>
-									<p>=====================================================================================</p>
-									<h3>${info.index}</h3>
-									<p>投稿ID：${post.postID}</p>
-									<p>投稿したアカウントのID：${post.accID}</p>
-									<p>タイトル：${post.title}</p>
-									<p>
-									<c:forEach var="tag" items="${post.imgTags}" varStatus="taginfo">
-									【タグ${taginfo.count}：${tag}】
-									</c:forEach>
-									</p>
-									<p>キャプション：「${post.caption}」</p>
-									<p>前面画像パス：${post.alphaImg}</p>
-									<p>背景画像パス：${post.alphaImg}</p>
-								</div>
-							</c:forEach>
-						</div>
-					</c:when>
-				</c:choose>
+				<%
+				List<Post> posts = (List<Post>) request.getAttribute("get_posts");
+	        	for(int i=0;i<posts.size();i++){
+	            %>
+	            <p>=====================================================================================</p>
+	            <p>投稿ID：<%=posts.get(i).getPostID() %></p>
+	            <p>投稿したアカウントのID：<%=posts.get(i).getAccID() %></p>
+	            <p>タイトル：<%=posts.get(i).getTitle() %></p>
+					<%
+					for(int n=0;n<5;n++){
+					%>
+					<p>【タグ<%=n+1 %>：<%=posts.get(i).getImgTags()[n] %>】</p>
+					<%
+		            }
+		            %>
+				<p>キャプション：<%=posts.get(i).getCaption() %></p>
+				<p>第1画像パス：<%=posts.get(i).getAlphaImg() %></p>
+				<p>第2画像パス：<%=posts.get(i).getBaseImg() %></p>
+	            <%
+	            }
+	            %>
 		</section>
 	</body>
 </html>
