@@ -16,23 +16,23 @@
 					<input type="text" name="input_txt" id="textbox" value="${txtboxstr}">
 					<label for="order_select">並び順</label>
 					<select name="order" id="order_select">
-						<option value="1" <c:if test="${selected_order=='1'}">selected</c:if>>投稿日時が新しい順</option>
-						<option value="2" <c:if test="${selected_order=='2'}">selected</c:if>>投稿日時が古い順</option>
+						<option value="1" >投稿日時が新しい順</option>
+						<option value="2" >投稿日時が古い順</option>
 					</select>
 					<label for="mode_select">検索方法</label>
 					<select name="mode" id="mode_select">
-						<option value="1" <c:if test="${selected_mode=='1'}">selected</c:if>>タグOR検索</option>
-						<option value="2" <c:if test="${selected_mode=='2'}">selected</c:if>>タグAND検索</option>
-						<option value="3" <c:if test="${selected_mode=='3'}">selected</c:if>>タイトルOR検索</option>
-						<option value="4" <c:if test="${selected_mode=='4'}">selected</c:if>>タイトルAND検索</option>
-						<option value="5" <c:if test="${selected_mode=='5'}">selected</c:if>>キャプションOR検索</option>
-						<option value="6" <c:if test="${selected_mode=='6'}">selected</c:if>>キャプションAND検索</option>
+						<option value="1" >タグOR検索</option>
+						<option value="2" >タグAND検索</option>
+						<option value="3" >タイトルOR検索</option>
+						<option value="4" >タイトルAND検索</option>
+						<option value="5" >キャプションOR検索</option>
+						<option value="6" >キャプションAND検索</option>
 					</select>
 					<button id="search-button">検索</button>
 				</form>
 				<%
 				List<Post> posts = (List<Post>) request.getAttribute("get_posts");
-				if (posts!=null) {%>
+				if (posts!=null&&tags.size()>=1) {%>
 					<%
 		        	for(int i=0;i<posts.size();i++){
 		            %>
