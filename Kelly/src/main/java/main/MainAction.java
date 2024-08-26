@@ -25,8 +25,6 @@ public class MainAction extends Action {
 		String url = "";
 		
 		url = "main.jsp";
-
-		System.out.println(postList.get(0).getBaseImg());
 		
 		req.setAttribute("postList", postList);
 		
