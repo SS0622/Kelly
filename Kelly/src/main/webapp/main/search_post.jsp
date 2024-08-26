@@ -33,25 +33,30 @@
 				</form>
 				<%
 				List<Post> posts = (List<Post>) request.getAttribute("get_posts");
-	        	for(int i=0;i<posts.size();i++){
-	            %>
-	            <p>=====================================================================================</p>
-	            <p>投稿ID：<%=posts.get(i).getPostID() %></p>
-	            <p>投稿したアカウントのID：<%=posts.get(i).getAccID() %></p>
-	            <p>タイトル：<%=posts.get(i).getTitle() %></p>
+				if (posts!=null) {%>
 					<%
-					for(int n=0;n<5;n++){
-					%>
-					<p>【タグ<%=n+1 %>：<%=posts.get(i).getImgTags()[n] %>】</p>
-					<%
+		        	for(int i=0;i<posts.size();i++){
+		            %>
+		            <p>=====================================================================================</p>
+		            <p>投稿ID：<%=posts.get(i).getPostID() %></p>
+		            <p>投稿したアカウントのID：<%=posts.get(i).getAccID() %></p>
+		            <p>タイトル：<%=posts.get(i).getTitle() %></p>
+						<%
+						for(int n=0;n<5;n++){
+						%>
+						<p>【タグ<%=n+1 %>：<%=posts.get(i).getImgTags()[n] %>】</p>
+						<%
+			            }
+			            %>
+					<p>キャプション：<%=posts.get(i).getCaption() %></p>
+					<p>第1画像パス：<%=posts.get(i).getAlphaImg() %></p>
+					<p>第2画像パス：<%=posts.get(i).getBaseImg() %></p>
+		            <%
 		            }
 		            %>
-				<p>キャプション：<%=posts.get(i).getCaption() %></p>
-				<p>第1画像パス：<%=posts.get(i).getAlphaImg() %></p>
-				<p>第2画像パス：<%=posts.get(i).getBaseImg() %></p>
-	            <%
-	            }
-	            %>
+		        <%
+		        }
+		        %>
 		</section>
 	</body>
 </html>
