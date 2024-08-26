@@ -1,6 +1,5 @@
 <%@include file="../common/header.html" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="bean.Post" %>
