@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import="java.util.ArrayList,java.util.List,bean.Post" %>
-<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
