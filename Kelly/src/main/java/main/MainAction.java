@@ -27,6 +27,7 @@ public class MainAction extends Action {
 			System.out.println(1);
 			System.out.println(postList.get(i));
 		}
+		System.out.println(postList.get(0).getBaseImg());
 		
 		req.setAttribute("postList", postList);
 		
