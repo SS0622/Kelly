@@ -24,7 +24,7 @@
         	List<Post> postList = (List<Post>) request.getAttribute("postList");
         	for(int i=0;i<postList.size();i++){
         %>
-        <img src="<%=postList.get(i).getBaseImg() %>" alt="img alt"><br>
+        <img src="../upload/download.jpg" alt="img alt"><br>
         <%
         	}
         %>

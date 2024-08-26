@@ -56,7 +56,7 @@ public class PostFile extends HttpServlet {
 		String uniqueFileName2= UUID.randomUUID().toString() + "_" + originalFileName2;
 		
 		// ファイルの保存先
-		Path uploadPath = Paths.get("/var/www/picture");// C:/upload
+		Path uploadPath = Paths.get("C:/Users/ebinuma/git/Kelly2/Kelly/src/main/webapp/upload");// C:/upload
 		
         // 保存先ディレクトリが存在しない場合は作成
         if (!Files.exists(uploadPath)) {
@@ -72,8 +72,8 @@ public class PostFile extends HttpServlet {
         picture2.write(filePath2.toString());
 	
 		post.setAccID(account.getAccountId());
-		post.setAlphaImg(filePath1.toString());
-		post.setBaseImg(filePath2.toString());
+		post.setAlphaImg("../upload/"+uniqueFileName1.toString());
+		post.setBaseImg("../upload/"+uniqueFileName2.toString());
 		post.setTitle(title);
 		post.setCaption(caption);
 		post.setImgTags(tags);
