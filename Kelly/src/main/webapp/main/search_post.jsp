@@ -32,7 +32,7 @@
 				</form>
 				<%
 				List<Post> posts = (List<Post>) request.getAttribute("get_posts");
-				if (posts!=null&&tags.size()>=1) {%>
+				if (posts!=null&&posts.size()>=1) {%>
 					<%
 		        	for(int i=0;i<posts.size();i++){
 		            %>
