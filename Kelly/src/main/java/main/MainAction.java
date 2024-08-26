@@ -24,6 +24,7 @@ public class MainAction extends Action {
 		
 		url = "main.jsp";
 		for(int i=0;i<postList.size();i++) {
+			System.out.println(1);
 			System.out.println(postList.get(i));
 		}
 		

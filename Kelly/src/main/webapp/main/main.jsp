@@ -1,5 +1,6 @@
 <%@include file="../common/header.html" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page language="java" %>
 <html lang="ja">
 <head>
@@ -19,7 +20,7 @@
             <a href="PostSearch.action" class="button">作品を検索する</a>
         </div>
         <c:forEach var="post" items="${postList}">
-        	<img src="${post.getBaseImg() }" alt="img_path" >
+        	<img src="${postList.get(0) }" alt="img_path" >
    		</c:forEach>
  
         <hr>
