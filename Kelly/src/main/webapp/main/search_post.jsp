@@ -72,17 +72,8 @@
 		            <div>
 		            <hr>
 		            <p><a href="PostDetail.action?post_id=<%=posts.get(i).getPostID() %>">『<%=posts.get(i).getTitle() %>』</a></p>
-		            <p><font size="2"><%=posts.get(i).getAccData().getAccountName() %>さんの投稿</font></p>
+		            <p><font size="2">投稿者:<%=posts.get(i).getAccData().getAccountName() %></font></p>
 		            <img src="<%=posts.get(i).getBaseImg() %>" alt="img alt">
-		            <p>タグ:
-						<%
-						for(int n=0;n<5;n++){
-						%>
-						【<%=posts.get(i).getImgTags()[n] %>】
-						<%
-			            }
-			            %>
-			        </p>
 					<p><font size="2"><%=posts.get(i).getCreateedAt() %></font></p>
 					
 					<br><p>以下デバッグ用情報。後で消すこと</p>
