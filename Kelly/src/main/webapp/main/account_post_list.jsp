@@ -1,99 +1,90 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
-<%@ page import="java.util.ArrayList,java.util.List,bean.Post,bean.Account,dao.FollowDao,bean.Follow" %>
-<% 
-Post post = (Post) request.getAttribute("post_data");
-String accId = (String) request.getAttribute("account_id");
-FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
-%>
+<%@ page import="java.util.ArrayList,java.util.List,bean.Post" %>
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8">
-		<title>${post_data.title}</title>
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <link rel="stylesheet" href="test.css">
-	    <link rel="shortcut icon" href="picture/pic1.png">
-	
-	    <link rel="icon" href="../picture/検索.png">
-	</head>
-	<body>
-		  <!--ヘッダー-->
-		  <header>
-		    <p>　</p>
-		    <!--https://www.asobou.co.jp/blog/web/css-menu-->
-		    <!-- <h1><img id="headerpng" src="../picture/lg.png" alt="タイトル写真"></h1> -->
-		    <h1><summary style="font-size: 80px;">Legal-Graffiti</summary></h1>
-		    
-		  </header>
-		  <!--/ヘッダー-->
-		  <div id="wrapper">
-		    <div id="main">
-		  <summary><h2>${post_data.title}</h2></summary>
-		  <h2>
-		  <div>
-		  	<img src="${post_data.baseImg}" alt="img alt">
-		  	<a href="AccountPostList.action?account_id=${post_data.accData.accountId}"><p><font size="2">投稿者:${post_data.accData.accountName}さん</font></p></a>
-	        <p>${post_data.caption}</p>
-            <p>タグ:
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>画像を検索</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="test.css">
+    <link rel="shortcut icon" href="picture/pic1.png">
+
+    <link rel="icon" href="../picture/検索.png">
+</head>
+
+<body>
+
+  <!--ヘッダー-->
+  <header>
+    <p>　</p>
+    <!--https://www.asobou.co.jp/blog/web/css-menu-->
+    <!-- <h1><img id="headerpng" src="../picture/lg.png" alt="タイトル写真"></h1> -->
+    <h1><summary style="font-size: 80px;">Legal-Graffiti</summary></h1>
+    
+  </header>
+  <!--/ヘッダー-->
+
+  <div id="wrapper">
+    <div id="main">
+    <section id="point">
+      <summary><h2>${name}の投稿一覧</h2></summary>
+        <h2>
+            <%
+			List<Post> posts = (List<Post>) request.getAttribute("get_posts");
+			if (posts!=null&&posts.size()>=1) {
+			%>
+				<p><%=posts.size() %>件</p>
 				<%
-				for(int n=0;n<5;n++){
-				%>
-				【<%=post.getImgTags()[n] %>】
-				<%
+	        	for(int i=0;i<posts.size();i++){
+	            %>
+	            <div>
+	            <hr>
+	            <p><a href="PostDetail.action?post_id=<%=posts.get(i).getPostID() %>">『<%=posts.get(i).getTitle() %>』</a></p>
+	            <img src="<%=posts.get(i).getBaseImg() %>" alt="img alt">
+				<p><font size="2"><%=posts.get(i).getCreateedAt() %></font></p>
+				</div>
+	            <%
 	            }
 	            %>
-	        </p>
-	        <p><font size="2"><%=post.getCreateedAt() %></font></p><br>
-		  	<%
-		  	if (post.getAccData().getAccountId().equals(accId)){
-		  	%>
-		  	<a href="PostDelete.action?page=1&postid=${post_data.postID}"><p>この投稿を削除する</p></a>
-		  	<%
-		  	}else{
-		  	%>
-			  	<%
-			  	if (fDao.get(accId, post.getAccData().getAccountId())==null){
-			  	%>
-			  	<a href="FollowExecute.action?acc=${post_data.accData.accountId}&page=1&post=${post_data.postID}"><p>この投稿者をフォローする</p></a>
-			  	<%
-			  	}else{
-			  	%>
-			  	<a href="UnFollowExecute.action?acc=${post_data.accData.accountId}&page=1&post=${post_data.postID}"><p>この投稿者のフォローを解除する</p></a>
-			  	<%
-			  	}
-			  	%>
-		  	<%
-		  	}
-		  	%>
-		  </div>
-		  </h2>
-		  
-		  </div>
-		      <!--サイド-->
-		      <aside id="sidebar">
-		        <section id="side_banner">
-		          <!-- <h2>link</h2> -->
-		          <ul>
-		          <h2 style="background-color: #f69400;"><a href="main.jsp" class="button">メインページへ</a></h2>
-		          <h2 style="background-color: #f69400;"><a href="Post.action" class="button">投稿ページへ</a></h2>
-		          <h2 style="background-color: #f69400;"><a href="Logout.action" class="button">ログアウト</a></h2>
-		            
-		          </ul>
-		        </section>
-		        <section id="side_contact">
-		        </section>
-		      </aside>
-		      <!--/サイド-->
-		  </section>
-		</div>
-		<footer>
-		  <h3>&copy;Legal-Graffiti制作チーム</h3>
-		</footer>
-		<!--/フッター-->
-	</body>
+	        <%
+	        }
+	        %>
+        </h2>
+ 
+        <!-- <hr> -->
+      </details>
+
+    </div>
+        <!--サイド-->
+        <aside id="sidebar">
+          <section id="side_banner">
+            <!-- <h2>link</h2> -->
+            <ul>
+            <h2 style="background-color: #f69400;"><a href="main.jsp" class="button">メインページへ</a></h2>
+            <h2 style="background-color: #f69400;"><a href="Post.action" class="button">投稿ページへ</a></h2>
+            <h2 style="background-color: #f69400;"><a href="Logout.action" class="button">ログアウト</a></h2>
+              
+            </ul>
+          </section>
+          <section id="side_contact">
+          </section>
+        </aside>
+        <!--/サイド-->
+    </section>
+  </div>
+  <footer>
+    <h3>&copy;Legal-Graffiti制作チーム</h3>
+  </footer>
+  <!--/フッター-->
+
+</body>
+
 </html>
+
 
 <style>
 
@@ -104,7 +95,7 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
     }
     a { color:rgb(255, 255, 255); }
     img{
-      max-width: 100%;
+      width: 100px;
     }
     header{
       text-align: center;
