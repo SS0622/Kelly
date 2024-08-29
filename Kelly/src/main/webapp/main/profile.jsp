@@ -39,25 +39,10 @@
             
             <!-- 画像ファイルを選択するための入力フォーム -->
             <form action="Profile" method="post" enctype="multipart/form-data">
-         		<img id="imagePreview" src="icon_path" alt="選択された画像がここに表示されます" style="display:none; max-width: 300px; max-height: 300px;">
+            	<% Account account = (Account)request.getAttribute("account"); %>
+         		<img id="imagePreview" src="<%=account.getIconPath() %>" alt="選択された画像がここに表示されます" style="display:none; max-width: 300px; max-height: 300px;">
                 <label>icon <input type="file" name="icon" id="imageInput" accept="image/*"></label>
-                  <script>
-					  document.getElementById('imageInput').addEventListener('change', function(event) {
-					    const file = event.target.files[0];
-					    if (file) {
-					        const reader = new FileReader();
-					
-					        reader.onload = function(e) {
-					            const imagePreview = document.getElementById('imagePreview');
-					            imagePreview.src = e.target.result;
-					            imagePreview.style.display = 'block';
-					        }
-					
-					        reader.readAsDataURL(file);
-					    }
-					});
-				  </script>
-				  <% Account account = request.getAttribute("account"); %>
+
                 <label>name <input type="text" name="name" value="<%=account.getAccountName() %>"></label><br>
                 <input type="submit" value="変更">
             </form>
@@ -88,7 +73,22 @@
     <h3>&copy;Legal-Graffiti制作チーム</h3>
   </footer>
   <!--/フッター-->
-
+                  <script>
+					  document.getElementById('imageInput').addEventListener('change', function(event) {
+					    const file = event.target.files[0];
+					    if (file) {
+					        const reader = new FileReader();
+					
+					        reader.onload = function(e) {
+					            const imagePreview = document.getElementById('imagePreview');
+					            imagePreview.src = e.target.result;
+					            imagePreview.style.display = 'block';
+					        }
+					
+					        reader.readAsDataURL(file);
+					    }
+					});
+				  </script>
 </body>
 
 </html>

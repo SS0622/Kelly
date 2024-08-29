@@ -13,7 +13,7 @@
  <link rel="stylesheet" href="test.css">
  <link rel="shortcut icon" href="picture/pic1.png">
  <title>メインページ</title>
- <link rel="icon" href="../picture/メインページ.png">
+ <link rel="icon" href="../picture/favicon.png">
 </head>
 
 <body>
@@ -35,14 +35,14 @@
 
       <details open>
         <summary>画像一覧</summary>
-        <h2>
+        <h2 style="color:black;">
         <%
         	List<Post> postList = (List<Post>) request.getAttribute("postList");
         	if(postList != null && !postList.isEmpty() ){
         		System.out.print("a");
         		for(int i=0;i<postList.size();i++){
         %>
-        <a href="PostDetail.action?post_id=<%=postList.get(i).getPostID() %>">
+        <a style="color:black;" href="PostDetail.action?post_id=<%=postList.get(i).getPostID() %>">
         <img src="<%=postList.get(i).getBaseImg() %>?timestamp=<%=System.currentTimeMillis() %>" alt="img alt"></a><br>
         <%
         		}
@@ -59,12 +59,12 @@
           <section id="side_banner">
             <!-- <h2>link</h2> -->
             <ul>
-            <h2 style="background-color: #f69400;"><a href="Post.action" class="button">投稿ページへ</a></h2>
-            <h2 style="background-color: #f69400;"><a href="PostSearch.action" class="button">作品を検索する</a></h2>
-            <h2 style="background-color: #f69400;"><a href="profile.action" class="button">プロフィールを変更する</a></h2>
-            <h2 style="background-color: #f69400;"><a href="FollowList.action" class="button">フォロー一覧</a></h2>
-            <h2 style="background-color: #f69400;"><a href="FollowerList.action" class="button">フォロワー一覧</a></h2>
-            <h2 style="background-color: #f69400;"><a href="Logout.action" class="button">ログアウト</a></h2>
+            <h2 style="background-color: #f27000;"><a href="Post.action" class="button">投稿ページへ</a></h2>
+            <h2 style="background-color: #f27000;"><a href="PostSearch.action" class="button">作品を検索する</a></h2>
+            <h2 style="background-color: #f27000;"><a href="profile.action" class="button">プロフィールを変更する</a></h2>
+            <h2 style="background-color: #f27000;"><a href="FollowList.action" class="button">フォロー一覧</a></h2>
+            <h2 style="background-color: #f27000;"><a href="FollowerList.action" class="button">フォロワー一覧</a></h2>
+            <h2 style="background-color: #f27000;"><a href="Logout.action" class="button">ログアウト</a></h2>
               
             </ul>
           </section>
@@ -108,7 +108,7 @@
     footer{
       text-align: right;
       color: #fff;
-      background-color: #f69400;
+      background-color: #f27000;
     }
     #gazo{
       width: 347px;
@@ -144,8 +144,7 @@
       #main h2{
         font-size:30px;
         color: white;
-        text-shadow: 0px 0px 10px #ff001e;
-        border: 3px solid #ee3e52;
+        border: 3px solid #2299ff;
         padding: 11px 22px;
       }
       #main h3{
@@ -164,11 +163,11 @@
       }
       summary{
         font-size: 25px;
-        background-color: #ee3e52;
+        background-color: #2299ff;
         width: auto;
       }
       details[open] > summary {
-        background-color: #ee3e52;
+        background-color: #2299ff;
       }
     
     
@@ -196,7 +195,7 @@
     }
     #side_banner { margin-bottom: 30px; }
     #side_banner h2 {
-      background-color: #ee3e52;
+      background-color: #2299ff;
       color: #fff;
       padding: 7px;
       font-size: 14px;
