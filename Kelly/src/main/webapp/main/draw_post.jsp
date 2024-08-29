@@ -44,23 +44,28 @@
             <!-- 画像ファイルを選択するための入力フォーム -->
             <form action="PostFile2" method="post" enctype="multipart/form-data">
                 <summary>絵を描いてください</summary>
-			    <div style="width: 50%; margin: 0 auto; text-align: center;">
-			        <div class="paint_area">
+			    <div style="width: 50%; text-align: center;"><!-- margin: 0 auto;  -->
+			        <div class="paint_area" >
 			            <br>
 			            <canvas class="paint_box" id="test_canvas" width=500 height=500 style="border: solid 3px #000000;"></canvas>
-			            
+			        <div style="display:flex;">
 			            <input type="button" id="pen1" value="極細モード" class="pencilsize">
 			            <input type="button" id="pen2" value="細モード"  class="pencilsize">
 			            <input type="button" id="pen3" value="普通モード" class="pencilsize">
 			            <input type="button" id="pen4" value="太モード"  class="pencilsize">
 			            <input type="button" id="pen5" value="極太モード"  class="pencilsize">
-			            <input type="color" id="color_changer" value="#FFC200"  class="pencilsize">
-			            <input type="button" id="fill_button" value="全体塗りつぶし"  class="pencilsize">
+			        </div>
+			        
+			        <hr style="border:none;">
+			        <div style="display:flex;">
 			            
-			        </div>            
-			            <br>
-			            <input type="button" id="end_button" value="完成" style="color:f27000 ; border: solid 3px #000000;" class="pencilsize" >
-			            <br>
+			            <input type="button" id="fill_button" value="全体塗りつぶし"  class="pencilsize">
+			            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			            <div  style="width:40px;"><input type="color" id="color_changer" value="#FFC200"  class="pencilsize"></div>
+			            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			            <div><input type="button" id="end_button" value="完成" style="color:f27000 ; border: solid 3px #000000;" class="pencilsize" ></div>
+			        </div>
+			        </div>
 			    </div>
 			    <input type="text" id="id_image" class="id_image" name="writing" hidden required>
                 <hr>
@@ -76,7 +81,7 @@
                 <label style="color: black;">タグ 5: <input type="text" name="tags[]" maxlength="30"></label><br>
                 <p style="color: black;">コメント</p>
                 <textarea type="text" name="caption" maxlength="150" style="width: 300px; height: 200px"></textarea><br>
-                <br>
+                <!-- <br> -->
                 <p style="font-size:20px; color:red;">絵描きエリアの「完成」ボタンをクリックしていないと投稿されません。</p>
                 <input type="submit" value="アップロード" 
                 	style="background: #2299ff;
@@ -132,7 +137,7 @@
 		height: 28px;
 		color: white;
 		transition: border-color 0.3s;
-		width: 30%;">
+		width: 100px;">
 	}
 	
     @charset "utf-8";
