@@ -13,23 +13,20 @@ public class ProfileExecuteAction extends Action{
 
 //		#session関連
 		HttpSession session = req.getSession();
+		System.out.print("bbb");
 		
 //		#変数生成
-		boolean success=false;
 		Account account = (Account) req.getAttribute("account");
 		
 		AccountDao accountDao = new AccountDao();
 		
 //		#dbアクセス(保存)
-		success = accountDao.save(account);
+		accountDao.update(account);
 		
-		if(success) {
 			// セッションにログイン情報を保存
 			session.setAttribute("user", account);
 			res.sendRedirect("Main.action");
-		}else {
-			req.getRequestDispatcher("post.jsp").forward(req, res);
-		}
+
 //		#送信データ変換
 		
 //		#送信データセット

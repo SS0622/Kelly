@@ -27,11 +27,13 @@ public class Prifile extends HttpServlet {
 		HttpSession session = req.getSession();
 		Account account = (Account)session.getAttribute("user");
 		
+		System.out.print("www");
+		
 		Part icon;
 		String name = req.getParameter("name");
         
 	    try {
-			icon = req.getPart("picture2");
+			icon = req.getPart("icon");
 	        if (icon == null) {
 	            req.getRequestDispatcher("post.jsp").forward(req,  res);
 	        }
@@ -53,6 +55,8 @@ public class Prifile extends HttpServlet {
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
+        
+        System.out.println("eee");
 
         // 保存先ファイルの完全なパスを生成
         Path filePath2 = uploadPath.resolve(uniqueFileName);
@@ -65,7 +69,7 @@ public class Prifile extends HttpServlet {
 
 		req.setAttribute("account", account);
 		
-		res.sendRedirect("ProfileExecute.action");
+		req.getRequestDispatcher("ProfileExecute.action").forward(req, res);
     }
 		
 }
