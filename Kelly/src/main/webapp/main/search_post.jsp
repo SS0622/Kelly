@@ -70,9 +70,9 @@
 		            %>
 		            <div>
 		            <hr>
-		            <p><font size="2"><%=posts.get(i).getAccData().getAccountName() %>さんの投稿<font size="2"></p>
+		            <p>『<%=posts.get(i).getTitle() %>』</p>
+		            <p><font size="2"><%=posts.get(i).getAccData().getAccountName() %>さんの投稿</font></p>
 		            <img src="<%=posts.get(i).getBaseImg() %>" alt="img alt">
-		            <p>タイトル：<%=posts.get(i).getTitle() %></p>
 		            <p>タグ:
 						<%
 						for(int n=0;n<5;n++){
