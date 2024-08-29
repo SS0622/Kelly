@@ -12,25 +12,31 @@
 <body>
     <div class="form-wrapper">
         <h1>ログアウト確認</h1>
+        
         <form action="Logout.action" method="post">
             <div id="content">
                 <h2 style="text-align:center;">本当にログアウトしますか?</h2>
             </div>
-
+            
             <div class="button-panel">
-                <!-- <input type="submit" value="送信" class="button"> -->
-                <button id="end-btn" name="end" class="button">はい</button>
-                <br>
-                <!-- <hr> -->
-                <br>
-                <button id="cancel-btn" name="cancel" class="button">いいえ</button>
+            
+            <script type="text/javascript">
+			    function execute() {
+			        location.href = "./Logout.Execute.Action"
+			    }
+			</script>
+			
+				<a href="LogoutExecute.action" class="button"><h2 style="background-color: #f16272; height:50px; font-size:15px; text-align:center;  text-decoration: none;  "><p  style="transform: translateY(70%);">はい(ログアウトする)</p></h2></a>
+				<!-- <br> -->
+				<br>
+	            <!-- <button id="end-btn" name="end" class="button" onclick="execute()">はい(ログアウトする)</button> -->
+                <a href="Main.action" class="button"><h2 style="background-color: #f16272; height:50px; font-size:15px; text-align:center;  text-decoration: none;"><p  style="transform: translateY(70%);">いいえ(メインページへ戻る)</p></h2></a>
+                <!-- <button id="cancel-btn" name="cancel" class="button" onclick="main.jsp">いいえ(メインページへ戻る)</button> -->
+                
             </div>
         </form>
         <div class="form-footer">
-            <div class="login-link">
-                <a href="Main.action">メインページへ戻る</a>
-            </div>
-            <!-- <p><a href="#">パスワードを忘れた場合</a></p> -->
+            <br>
         </div>
     </div>
 
@@ -63,6 +69,9 @@
 
 
 <style>
+a {
+  text-decoration: none;
+}
 /* フォント */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
 
