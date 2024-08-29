@@ -18,18 +18,18 @@
             <div class="form-item">
                 <label for="password-input">パスワード</label>
                 <input id="password-input" type="password" name="password" required="required" placeholder="パスワード">
-                <div>
-                    <input id="password-display" type="checkbox">
-                    <label for="password-display">パスワードを表示</label>
-                </div>
-            </div>
+            	</div>
+            <div>
+              <input id="password-display" type="checkbox">
+              <label for="password-display">パスワードを表示</label>
+          </div>
             <div class="button-panel">
                 <input type="submit" class="button" title="サインイン" value="サインイン">
             </div>
         </form>
         <div class="form-footer">
-            <p><a href="#">アカウントを作成する</a></p>
-            <p><a href="#">パスワードを忘れた場合</a></p>
+            <p><a href="SignUp.action">アカウントを作成する</a></p>
+            <!-- <p><a href="#">パスワードを忘れた場合</a></p> -->
         </div>
     </div>
 

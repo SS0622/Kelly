@@ -66,9 +66,9 @@
           <section id="side_banner">
             <!-- <h2>link</h2> -->
             <ul>
-            <h2 style="background-color: #3e96ee;"><a href="main.jsp" class="button">メインページへ</a></h2>
-            <h2 style="background-color: #3e96ee;"><a href="PostSearch.action" class="button">検索ページへ</a></h2>
-            <h2 style="background-color: #3e96ee;"><a href="Logout.action" class="button">ログアウト</a></h2>
+            <h2 style="background-color: #f69400;"><a href="Main.action" class="button">メインページへ</a></h2>
+            <h2 style="background-color: #f69400;"><a href="PostSearch.action" class="button">検索ページへ</a></h2>
+            <h2 style="background-color: #f69400;"><a href="Logout.action" class="button">ログアウト</a></h2>
               
             </ul>
           </section>
@@ -112,7 +112,7 @@
     footer{
       text-align: right;
       color: #fff;
-      background-color: #3e96ee;
+      background-color: #f69400;
     }
     #gazo{
       width: 347px;
@@ -148,8 +148,8 @@
       #main h2{
         font-size:30px;
         color: white;
-        text-shadow: 0px 0px 10px #5afa71;
-        border: 3px solid #5afa71;
+        text-shadow: 0px 0px 10px #3e96ee;
+        border: 3px solid #3e96ee;
         padding: 11px 22px;
       }
       #main h3{
@@ -168,11 +168,11 @@
       }
       summary{
         font-size: 25px;
-        background-color: #5afa71;
+        background-color: #3e96ee;
         width: auto;
       }
       details[open] > summary {
-        background-color: #5afa71;
+        background-color: #3e96ee;
       }
     
     
@@ -200,7 +200,7 @@
     }
     #side_banner { margin-bottom: 30px; }
     #side_banner h2 {
-      background-color: #5afa71;
+      background-color: #3e96ee;
       color: #fff;
       padding: 7px;
       font-size: 14px;
