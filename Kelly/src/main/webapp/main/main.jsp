@@ -42,7 +42,8 @@
         		System.out.print("a");
         		for(int i=0;i<postList.size();i++){
         %>
-        <img src="<%=postList.get(i).getBaseImg() %>?timestamp=<%=System.currentTimeMillis() %>" alt="img alt"><br>
+        <a href="PostDetail.action?post_id=<%=postList.get(i).getPostID() %>">
+        <img src="<%=postList.get(i).getBaseImg() %>?timestamp=<%=System.currentTimeMillis() %>" alt="img alt"></a><br>
         <%
         		}
         	}
