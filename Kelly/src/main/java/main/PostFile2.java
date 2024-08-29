@@ -66,7 +66,7 @@ public class PostFile2 extends HttpServlet {
         
 		post.setAccID(account.getAccountId());
 		post.setAlphaImg("../upload/");
-		post.setBaseImg("../upload/"+uniqueFileName.toString());
+		post.setBaseImg("../upload/"+uniqueFileName.toString()+".png");
 		post.setTitle(title);
 		post.setCaption(caption);
 		post.setImgTags(tags);
