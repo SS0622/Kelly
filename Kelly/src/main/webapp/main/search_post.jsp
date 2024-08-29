@@ -70,7 +70,7 @@
 		            %>
 		            <div>
 		            <hr>
-		            <p>『<%=posts.get(i).getTitle() %>』</p>
+		            <p><a href="PostDetail.action?post_id=<%=posts.get(i).getPostID() %>">『<%=posts.get(i).getTitle() %>』</a></p>
 		            <p><font size="2"><%=posts.get(i).getAccData().getAccountName() %>さんの投稿</font></p>
 		            <img src="<%=posts.get(i).getBaseImg() %>" style="max-width: 100%;" alt="img alt">
 		            <p>タグ:
@@ -82,7 +82,6 @@
 			            }
 			            %>
 			        </p>
-					<p>キャプション：<%=posts.get(i).getCaption() %></p>
 					<p><font size="2"><%=posts.get(i).getCreateedAt() %></font></p>
 					
 					<br><p>以下デバッグ用情報。後で消すこと</p>
