@@ -56,7 +56,8 @@
 					    }
 					});
 				  </script>
-                <label>name <input type="text" name="name"></label>
+                <label>name <input type="text" name="name" value="<%=account.getAccountName() %>"></label><br>
+                <input type="submit" value="変更">
             </form>
         </div>
  
