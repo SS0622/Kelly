@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
-<%@ page import="java.util.ArrayList,java.util.List,bean.Post,bean.Account" %>
+<%@ page import="java.util.ArrayList,java.util.List,bean.Post,bean.Account,dao.FollowDao,bean.Follow" %>
 <% 
 Post post = (Post) request.getAttribute("post_data");
+String accId = (String) request.getAttribute("account_id");
+FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -33,6 +35,27 @@ Post post = (Post) request.getAttribute("post_data");
 		  <div>
 		  	<img src="${post_data.baseImg}" alt="img alt">
 		  	<p><font size="2">投稿者:${post_data.accData.accountName}さん</font></p>
+		  	<%
+		  	if (post.getAccData().getAccountId().equals(accId)){
+		  	%>
+		  	<!--ここに自作品削除を入れる-->
+		  	<%
+		  	}else{
+		  	%>
+			  	<%
+			  	if (fDao.get(accId, post.getAccData().getAccountId())==null){
+			  	%>
+			  	<a href="FollowExecute.action?acc=${post_data.accData.accountId}&page=1&post=${post_data.postID}"><p>この投稿者をフォローする</p></a>
+			  	<%
+			  	}else{
+			  	%>
+			  	<a href="UnFollowExecute.action?acc=${post_data.accData.accountId}&page=1&post=${post_data.postID}"><p>この投稿者のフォローを解除する</p></a>
+			  	<%
+			  	}
+			  	%>
+		  	<%
+		  	}
+		  	%>
 	        <p>${post_data.caption}</p>
             <p>タグ:
 				<%
