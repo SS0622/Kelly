@@ -72,7 +72,7 @@
 		            <hr>
 		            <p>『<%=posts.get(i).getTitle() %>』</p>
 		            <p><font size="2"><%=posts.get(i).getAccData().getAccountName() %>さんの投稿</font></p>
-		            <img src="<%=posts.get(i).getBaseImg() %>" alt="img alt">
+		            <img src="<%=posts.get(i).getBaseImg() %>" style="max-width: 100%;" alt="img alt">
 		            <p>タグ:
 						<%
 						for(int n=0;n<5;n++){
