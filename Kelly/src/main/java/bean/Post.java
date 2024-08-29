@@ -28,6 +28,9 @@ public class Post implements Serializable {
 	
 	// アカウント情報
 	private Account accData;
+	
+	// 投稿日時
+	private String createed_at;
 
 	/**
 	 * 以下 ゲッター、セッター
@@ -94,6 +97,13 @@ public class Post implements Serializable {
 	
 	public void setAccData(Account account) {
 		this.accData = account;
+	}
+	
+	public String getCreateedAt() {
+		return this.createed_at;
+	}
+	public void setCreateedAt(String time) {
+		this.createed_at = time;
 	}
 }
 

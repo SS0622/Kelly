@@ -68,7 +68,7 @@ public class PostDao extends Dao{
 		PreparedStatement statement = null;
 		
 		try {
-			statement = connection.prepareStatement("select * from POST where POST_ID=?");
+			statement = connection.prepareStatement("select POST_ID,ACCOUNT_ID,TAG_1,TAG_2,TAG_3,TAG_4,TAG_5,PICTURE_1,PICTURE_2,CAST(CREATED_AT AS VARCHAR) AS CREATED_AT,TITLE,CAPTION from POST where POST_ID=?");
 			
 			statement.setInt(1, post_id);
 			
@@ -90,6 +90,7 @@ public class PostDao extends Dao{
 				post.setBaseImg(rSet.getString("picture_2"));
 				post.setTitle(rSet.getString("title"));
 				post.setCaption(rSet.getString("caption"));
+				post.setCreateedAt(rSet.getString("CREATED_AT"));
 			}else {
 				post = null;
 			}
@@ -344,12 +345,13 @@ public class PostDao extends Dao{
 		}
 		try{
 			//検索開始
-			statement=connection.prepareStatement("select * from POST" + TAGsql);
+			statement=connection.prepareStatement("select POST_ID,ACCOUNT_ID,TAG_1,TAG_2,TAG_3,TAG_4,TAG_5,PICTURE_1,PICTURE_2,CAST(CREATED_AT AS VARCHAR) AS CREATED_AT,TITLE,CAPTION from POST" + TAGsql);
 			rSet=statement.executeQuery();
 			
 			//検索結果の整形
 			while(rSet.next()){
 				Post p = new Post();
+				AccountDao aDao = new AccountDao();
 				String[] tagstrs = new String[5];
 				p.setPostID(rSet.getInt("POST_ID"));
 				p.setAccID(rSet.getString("ACCOUNT_ID"));
@@ -363,6 +365,8 @@ public class PostDao extends Dao{
 				p.setBaseImg(rSet.getString("PICTURE_2"));
 				p.setTitle(rSet.getString("TITLE"));
 				p.setCaption(rSet.getString("CAPTION"));
+				p.setCreateedAt(rSet.getString("CREATED_AT"));
+				p.setAccData(aDao.get(rSet.getString("ACCOUNT_ID")));
 				//リストに追加
 				postList.add(p);
 			}
