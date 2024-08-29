@@ -68,23 +68,30 @@
 					<%
 		        	for(int i=0;i<posts.size();i++){
 		            %>
-		            <p>=====================================================================================</p>
-		            <p>投稿ID：<%=posts.get(i).getPostID() %></p>
-		            <p>投稿したアカウントのID：<%=posts.get(i).getAccID() %></p>
+		            <div>
+		            <hr>
+		            <p><font size="2"><%=posts.get(i).getAccData().getAccountName() %>さんの投稿<font size="2"></p>
+		            <img src="<%=posts.get(i).getBaseImg() %>" alt="img alt">
 		            <p>タイトル：<%=posts.get(i).getTitle() %></p>
+		            <p>タグ:
 						<%
 						for(int n=0;n<5;n++){
 						%>
-						<p>【タグ<%=n+1 %>：<%=posts.get(i).getImgTags()[n] %>】</p>
+						【<%=posts.get(i).getImgTags()[n] %>】
 						<%
 			            }
 			            %>
+			        </p>
 					<p>キャプション：<%=posts.get(i).getCaption() %></p>
-					<p>第1画像パス：<%=posts.get(i).getAlphaImg() %></p>
-					<p>第2画像パス：<%=posts.get(i).getBaseImg() %></p>
+					<p><font size="2"><%=posts.get(i).getCreateedAt() %></font></p>
+					
+					<br><p>以下デバッグ用情報。後で消すこと</p>
+					<p>投稿ID：<%=posts.get(i).getPostID() %></p>
+					<p>画像パス：<%=posts.get(i).getBaseImg() %></p>
 		            <%
 		            }
 		            %>
+		            </div>
 		        <%
 		        }
 		        %>
