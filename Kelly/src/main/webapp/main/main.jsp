@@ -61,7 +61,7 @@
             <ul>
             <h2 style="background-color: #f69400;"><a href="Post.action" class="button">投稿ページへ</a></h2>
             <h2 style="background-color: #f69400;"><a href="PostSearch.action" class="button">作品を検索する</a></h2>
-            <h2 style="background-color: #f69400;"><a href="Profile.action" class="button">プロフィールを変更する</a></h2>
+            <h2 style="background-color: #f69400;"><a href="profile.action" class="button">プロフィールを変更する</a></h2>
             <h2 style="background-color: #f69400;"><a href="FollowList.action" class="button">フォロー一覧</a></h2>
             <h2 style="background-color: #f69400;"><a href="FollowerList.action" class="button">フォロワー一覧</a></h2>
             <h2 style="background-color: #f69400;"><a href="Logout.action" class="button">ログアウト</a></h2>
