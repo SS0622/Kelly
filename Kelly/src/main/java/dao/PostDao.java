@@ -398,4 +398,40 @@ public class PostDao extends Dao{
 		}
 		return postList;
 	}
+	public boolean delete(String postid) throws Exception {
+		// コネクションの確立
+		Connection connection = getConnection();
+		
+		PreparedStatement statement = null;
+		
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("DELETE FROM POST WHERE POST_ID=?");
+			// プリペアードステートメントにアカウントIDをバインド
+			statement.setString(1, postid);
+			
+			// プリペアードステートメントを実行
+			statement.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		return true;
+	}
 }

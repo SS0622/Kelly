@@ -35,10 +35,21 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
 		  <div>
 		  	<img src="${post_data.baseImg}" alt="img alt">
 		  	<p><font size="2">投稿者:${post_data.accData.accountName}さん</font></p>
+	        <p>${post_data.caption}</p>
+            <p>タグ:
+				<%
+				for(int n=0;n<5;n++){
+				%>
+				【<%=post.getImgTags()[n] %>】
+				<%
+	            }
+	            %>
+	        </p>
+	        <p><font size="2"><%=post.getCreateedAt() %></font></p><br>
 		  	<%
 		  	if (post.getAccData().getAccountId().equals(accId)){
 		  	%>
-		  	<!--ここに自作品削除を入れる-->
+		  	<a href="PostDelete.action?page=1&postid=${post_data.postID}"><p>この投稿を削除する</p></a>
 		  	<%
 		  	}else{
 		  	%>
@@ -56,17 +67,6 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
 		  	<%
 		  	}
 		  	%>
-	        <p>${post_data.caption}</p>
-            <p>タグ:
-				<%
-				for(int n=0;n<5;n++){
-				%>
-				【<%=post.getImgTags()[n] %>】
-				<%
-	            }
-	            %>
-	        </p>
-	        <p><font size="2"><%=post.getCreateedAt() %></font></p>
 		  </div>
 		  </h2>
 		  
