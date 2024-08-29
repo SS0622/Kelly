@@ -31,15 +31,9 @@ public class PostDetailAction extends Action{
 		
 		if (imgData!=null) {
 			// リクエストパラメータのセット
-			req.setAttribute("post_id",imgData.getPostID());
-			req.setAttribute("account_id",imgData.getAccID());
-			req.setAttribute("img_tags",imgData.getImgTags());
-			req.setAttribute("front_img",imgData.getAlphaImg());
-			req.setAttribute("back_img",imgData.getBaseImg());
-			req.setAttribute("img_title",imgData.getTitle());
-			req.setAttribute("img_caption",imgData.getCaption());
+			req.setAttribute("post_data",imgData);
 		}
         // JSPへフォワード
-        req.getRequestDispatcher("フォワード先のJSP").forward(req, res);
+        req.getRequestDispatcher("PostDetail.jsp").forward(req, res);
 	}
 }

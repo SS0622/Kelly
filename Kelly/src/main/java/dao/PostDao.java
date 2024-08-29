@@ -75,6 +75,7 @@ public class PostDao extends Dao{
 			ResultSet rSet = statement.executeQuery();
 			
 			if(rSet.next()) {
+				AccountDao aDao = new AccountDao();
 				String[] tags = new String[] {null, null, null, null, null};
 				post.setPostID(post_id);
 				post.setAccID(rSet.getString("account_id"));
@@ -91,6 +92,7 @@ public class PostDao extends Dao{
 				post.setTitle(rSet.getString("title"));
 				post.setCaption(rSet.getString("caption"));
 				post.setCreateedAt(rSet.getString("CREATED_AT"));
+				post.setAccData(aDao.get(rSet.getString("ACCOUNT_ID")));
 			}else {
 				post = null;
 			}
