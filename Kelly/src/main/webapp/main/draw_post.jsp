@@ -174,7 +174,7 @@
       #main h2{
         font-size:30px;
         color: white;
-        border: 3px solid #f27000;
+        border: 3px solid #2299ff;
         padding: 11px 22px;
       }
       #main h3{
@@ -193,11 +193,11 @@
       }
       summary{
         font-size: 25px;
-        background-color: #f27000;
+        background-color: #2299ff;
         width: auto;
       }
       details[open] > summary {
-        background-color: #f27000;
+        background-color: #2299ff;
       }
       .redstr{
       color:red;
@@ -228,7 +228,7 @@
     }
     #side_banner { margin-bottom: 30px; }
     #side_banner h2 {
-      background-color: #f27000;
+      background-color: #2299ff;
       color: #fff;
       padding: 7px;
       font-size: 14px;
