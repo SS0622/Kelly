@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="test.css">
     <link rel="shortcut icon" href="picture/pic1.png">
 
-    <link rel="icon" href="../picture/検索.png">
+    <link rel="icon" href="../picture/favicon.png">
 </head>
 
 <body>
@@ -76,6 +76,7 @@
             <ul>
             <h2 style="background-color: #f27000;"><a href="Main.action" class="button">メインページへ</a></h2>
             <h2 style="background-color: #f27000;"><a href="Post.action" class="button">投稿ページへ</a></h2>
+            <h2 style="background-color: #f27000;"><a href="DrawPost.action" class="button">手書き投稿ページへ</a></h2>
             <h2 style="background-color: #f27000;"><a href="PostSearch.action" class="button">作品を検索する</a></h2>
             <h2 style="background-color: #f27000;"><a href="profile.action" class="button">プロフィールを変更する</a></h2>
             <h2 style="background-color: #f27000;"><a href="FollowList.action" class="button">フォロー一覧</a></h2>

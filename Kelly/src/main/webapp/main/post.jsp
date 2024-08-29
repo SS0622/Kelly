@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="test.css">
     <link rel="shortcut icon" href="picture/pic1.png">
 
-    <link rel="icon" href="../picture/投稿.png">
+    <link rel="icon" href="../picture/favicon.png">
 </head>
 
 <body>
@@ -38,8 +38,12 @@
             
             <!-- 画像ファイルを選択するための入力フォーム -->
             <form action="PostFile" method="post" enctype="multipart/form-data">
+            	
                 <summary>画像を選択してください</summary>
-                <input type="file" name="picture2" accept="image/*">
+                
+                <input type="file" name="picture2" accept="image/*" 
+	                class="fileselectbutton" >
+                <br>
                 <hr>
                 <summary>画像のタイトル</summary>
                 <input type="text" name="title" value="title" style="width:300px; height: 30px; font-size:20px" maxlength="30">
@@ -53,7 +57,14 @@
                 <p style="color: black;">コメント</p>
                 <textarea type="text" name="caption" maxlength="150" style="width: 300px; height: 200px"></textarea><br>
                 <br>
-                <input type="submit" value="アップロード">
+                <input type="submit" value="アップロード"
+                style="background: #2299ff;
+					  border-bottom: 2px solid white;
+					  border: none;
+					  height: 28px;
+					  color: white;
+					  transition: border-color 0.3s;
+					  width: 20%;">
             </form>
         </div>
  
@@ -66,9 +77,13 @@
           <section id="side_banner">
             <!-- <h2>link</h2> -->
             <ul>
-            <h2 style="background-color: #f69400;"><a href="Main.action" class="button">メインページへ</a></h2>
-            <h2 style="background-color: #f69400;"><a href="PostSearch.action" class="button">検索ページへ</a></h2>
-            <h2 style="background-color: #f69400;"><a href="Logout.action" class="button">ログアウト</a></h2>
+            <h2 style="background-color: #f27000;"><a href="Main.action" class="button">メインページへ</a></h2>
+            <h2 style="background-color: #f27000;"><a href="DrawPost.action" class="button">手書き投稿ページへ</a></h2>
+            <h2 style="background-color: #f27000;"><a href="PostSearch.action" class="button">作品を検索する</a></h2>
+            <h2 style="background-color: #f27000;"><a href="profile.action" class="button">プロフィールを変更する</a></h2>
+            <h2 style="background-color: #f27000;"><a href="FollowList.action" class="button">フォロー一覧</a></h2>
+            <h2 style="background-color: #f27000;"><a href="FollowerList.action" class="button">フォロワー一覧</a></h2>
+            <h2 style="background-color: #f27000;"><a href="Logout.action" class="button">ログアウト</a></h2>
               
             </ul>
           </section>
@@ -89,6 +104,14 @@
 
 
 <style>
+	.fileselectbutton{
+		  background: gray;
+		  border-bottom: 2px solid white;
+		  height: 28px;
+		  transition: border-color 0.3s;
+		  width: 100%;
+		  
+	}
 
     @charset "utf-8";
     body {
@@ -112,7 +135,7 @@
     footer{
       text-align: right;
       color: #fff;
-      background-color: #f69400;
+      background-color: #f27000;
     }
     #gazo{
       width: 347px;
@@ -148,7 +171,7 @@
       #main h2{
         font-size:30px;
         color: white;
-        text-shadow: 0px 0px 10px #3e96ee;
+        
         border: 3px solid #3e96ee;
         padding: 11px 22px;
       }
