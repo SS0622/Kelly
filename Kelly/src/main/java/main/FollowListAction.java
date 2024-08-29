@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class FollowerListAction extends Action{
+public class FollowListAction extends Action{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
@@ -22,14 +22,13 @@ public class FollowerListAction extends Action{
 		List<Follow> follows = null;
 		
 		// 検索
-		follows=fDao.allFollower(account.getAccountId());
+		follows=fDao.allFollow(account.getAccountId());
 		
 		// フォワード先へ送るデータをセット
-		req.setAttribute("follower_list", follows); // 取得したリスト
+		req.setAttribute("follow_list", follows); // 取得したリスト
 		req.setAttribute("account_id",account.getAccountId());
-		req.setAttribute("follow_check",fDao);
 
 		// JSPへフォワード
-		req.getRequestDispatcher("follower_list.jsp").forward(req, res);
+		req.getRequestDispatcher("follow_list.jsp").forward(req, res);
 	}
 }

@@ -30,6 +30,10 @@ public class UnFollowExecuteAction extends Action{
 		if (pageType.equals("1")) {
 			req.setAttribute("post_id",postId);
 			req.getRequestDispatcher("PostDetail.action").forward(req, res);
+		}else if (pageType.equals("2")) {
+			req.getRequestDispatcher("FollowList.action").forward(req, res);
+		}else if (pageType.equals("3")) {
+			req.getRequestDispatcher("FollowerList.action").forward(req, res);
 		}
 	}
 }

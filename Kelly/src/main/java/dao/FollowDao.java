@@ -70,9 +70,9 @@ public class FollowDao extends Dao{
 			AccountDao aDao = new AccountDao();
 			while(rSet.next()){
 				Follow f = new Follow();
-				f.setAccountId(rSet.getString("FOLLOWER_ID"));
+				f.setAccountId(rSet.getString("ACCOUNT_ID"));
 				f.setFollowId(accountId);
-				f.setAccData(aDao.get(rSet.getString("FOLLOWER_ID")));
+				f.setAccData(aDao.get(rSet.getString("ACCOUNT_ID")));
 				//リストに追加
 				follows.add(f);
 			}
