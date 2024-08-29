@@ -49,8 +49,9 @@ public class Prifile extends HttpServlet {
 		String uniqueFileName= UUID.randomUUID().toString() + "_" + originalFileName;
 		
 		// ファイルの保存先
-		Path uploadPath = Paths.get("C:/Users/ebinuma/git/Kelly2/Kelly/src/main/webapp/upload");// C:/upload
+		Path uploadPath = Paths.get("/home/lg/tomcat/tomcat10/webapps/Kelly/upload");// C:/upload
 									// /home/lg/tomcat/tomcat10/webapps/Kelly/upload
+									// C:/Users/ebinuma/git/Kelly2/Kelly/src/main/webapp/upload
         // 保存先ディレクトリが存在しない場合は作成
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);

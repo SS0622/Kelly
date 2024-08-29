@@ -33,7 +33,7 @@
     <section id="point">
       <summary><h2>メインページ</h2></summary>
 
-      <details open>
+      <!-- <details open> -->
         <summary>画像一覧</summary>
         <h2 style="color:black;">
         <%
@@ -51,7 +51,7 @@
         </h2>
  
         <!-- <hr> -->
-      </details>
+      <!-- </details> -->
 
     </div>
         <!--サイド-->

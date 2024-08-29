@@ -31,10 +31,10 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
 		  <div id="wrapper">
 		    <div id="main">
 		  <summary><h2>${post_data.title}</h2></summary>
-		  <h2>
+		  <h2 style="color: black;">
 		  <div>
 		  	<img src="${post_data.baseImg}" alt="img alt">
-		  	<a href="AccountPostList.action?account_id=${post_data.accData.accountId}"><p><font size="2">投稿者:${post_data.accData.accountName}さん</font></p></a>
+		  	<a style="color: black;" href="AccountPostList.action?account_id=${post_data.accData.accountId}"><p><font size="2">投稿者:${post_data.accData.accountName}さん</font></p></a>
 	        <p>${post_data.caption}</p>
             <p>タグ:
 				<%
@@ -49,18 +49,18 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
 		  	<%
 		  	if (post.getAccData().getAccountId().equals(accId)){
 		  	%>
-		  	<a href="PostDelete.action?page=1&postid=${post_data.postID}"><p>この投稿を削除する</p></a>
+		  	<a style="color: black;" href="PostDelete.action?page=1&postid=${post_data.postID}"><p>この投稿を削除する</p></a>
 		  	<%
 		  	}else{
 		  	%>
 			  	<%
 			  	if (fDao.get(accId, post.getAccData().getAccountId())==null){
 			  	%>
-			  	<a href="FollowExecute.action?acc=${post_data.accData.accountId}&page=1&post=${post_data.postID}"><p>この投稿者をフォローする</p></a>
+			  	<a style="color: black;" href="FollowExecute.action?acc=${post_data.accData.accountId}&page=1&post=${post_data.postID}"><p>この投稿者をフォローする</p></a>
 			  	<%
 			  	}else{
 			  	%>
-			  	<a href="UnFollowExecute.action?acc=${post_data.accData.accountId}&page=1&post=${post_data.postID}"><p>この投稿者のフォローを解除する</p></a>
+			  	<a style="color: black;" href="UnFollowExecute.action?acc=${post_data.accData.accountId}&page=1&post=${post_data.postID}"><p>この投稿者のフォローを解除する</p></a>
 			  	<%
 			  	}
 			  	%>
@@ -76,9 +76,14 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
 		        <section id="side_banner">
 		          <!-- <h2>link</h2> -->
 		          <ul>
-		          <h2 style="background-color: #f69400;"><a href="main.jsp" class="button">メインページへ</a></h2>
-		          <h2 style="background-color: #f69400;"><a href="Post.action" class="button">投稿ページへ</a></h2>
-		          <h2 style="background-color: #f69400;"><a href="Logout.action" class="button">ログアウト</a></h2>
+                <h2 style="background-color: #f27000;"><a href="Main.action" class="button">メインページへ</a></h2>
+                <h2 style="background-color: #f27000;"><a href="Post.action" class="button">投稿ページへ</a></h2>
+                <h2 style="background-color: #f27000;"><a href="DrawPost.action" class="button">手書き投稿ページへ</a></h2>
+                <h2 style="background-color: #f27000;"><a href="PostSearch.action" class="button">作品を検索する</a></h2>
+                <h2 style="background-color: #f27000;"><a href="profile.action" class="button">プロフィールを変更する</a></h2>
+                <h2 style="background-color: #f27000;"><a href="FollowList.action" class="button">フォロー一覧</a></h2>
+                <h2 style="background-color: #f27000;"><a href="FollowerList.action" class="button">フォロワー一覧</a></h2>
+                <h2 style="background-color: #f27000;"><a href="Logout.action" class="button">ログアウト</a></h2>
 		            
 		          </ul>
 		        </section>
@@ -119,7 +124,7 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
     footer{
       text-align: right;
       color: #fff;
-      background-color: #f69400;
+      background-color: #f27000;
     }
     #gazo{
       width: 347px;
@@ -155,8 +160,7 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
       #main h2{
         font-size:30px;
         color: white;
-        text-shadow: 0px 0px 10px #5afa71;
-        border: 3px solid #5afa71;
+        border: 3px solid #2299ff;
         padding: 11px 22px;
       }
       #main h3{
@@ -175,11 +179,11 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
       }
       summary{
         font-size: 25px;
-        background-color: #5afa71;
+        background-color: #2299ff;
         width: auto;
       }
       details[open] > summary {
-        background-color: #5afa71;
+        background-color: #2299ff;
       }
     
     
@@ -207,7 +211,7 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
     }
     #side_banner { margin-bottom: 30px; }
     #side_banner h2 {
-      background-color: #5afa71;
+      background-color: #2299ff;
       color: #fff;
       padding: 7px;
       font-size: 14px;
