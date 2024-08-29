@@ -3,32 +3,39 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ログイン</title>
+    <title>新規アカウント登録</title>
     <!-- 外部CSSファイルへのリンク -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <div class="form-wrapper">
-        <h1>ログイン</h1>
-        <form action="LoginExecute.action" method="post">
+        <h1>新規アカウント登録</h1>
+        <form action="SignUpExecute.action" method="post">
             <div class="form-item">
-                <label for="email-input">アカウントID</label>
-                <input id="email-input" type="text" name="account_id" required="required" placeholder="アカウントID">
+                <label for="userId">ユーザーID</label>
+                <input id="userId" type="text" name="userId" required="required" placeholder="ユーザーID">
             </div>
             <div class="form-item">
-                <label for="password-input">パスワード</label>
-                <input id="password-input" type="password" name="password" required="required" placeholder="パスワード">
-            	</div>
+                <label for="email">メールアドレス:</label>
+                <input type="email" id="email" name="email" required="required" placeholder="メールアドレス"><br>
+            </div>
+            <div class="form-item">
+                <label for="password">パスワード</label>
+                <input id="password" type="password" name="password" required="required" placeholder="パスワード">
+            </div>
             <div>
-              <input id="password-display" type="checkbox">
-              <label for="password-display">パスワードを表示</label>
-          </div>
+                <input id="password-display" type="checkbox">
+                <label for="password-display">パスワードを表示</label>
+            </div>
             <div class="button-panel">
-                <input type="submit" class="button" title="サインイン" value="サインイン">
+                <input type="submit" value="送信" class="button">
+                <!-- <input type="submit" class="button" title="サインイン" value="サインイン"> -->
             </div>
         </form>
         <div class="form-footer">
-            <p><a href="SignUp.action">アカウントを作成する</a></p>
+            <div class="login-link">
+                アカウントをお持ちですか？ <a href="login.jsp">ログイン</a>
+            </div>
             <!-- <p><a href="#">パスワードを忘れた場合</a></p> -->
         </div>
     </div>
@@ -36,7 +43,7 @@
     <!-- JavaScriptコード -->
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            var passwordInput = document.getElementById('password-input');
+            var passwordInput = document.getElementById('password');
             var passwordDisplay = document.getElementById('password-display');
 
             // 「パスワードを表示」が変更された時の処理
