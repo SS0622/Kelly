@@ -34,7 +34,7 @@ FollowDao fDao = (FollowDao) request.getAttribute("follow_check");
 		  <h2>
 		  <div>
 		  	<img src="${post_data.baseImg}" alt="img alt">
-		  	<p><font size="2">投稿者:${post_data.accData.accountName}さん</font></p>
+		  	<a href="AccountPostList.action?account_id=${post_data.accData.accountId}"><p><font size="2">投稿者:${post_data.accData.accountName}さん</font></p></a>
 	        <p>${post_data.caption}</p>
             <p>タグ:
 				<%

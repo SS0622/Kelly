@@ -43,7 +43,7 @@
 	            %>
 	            <hr>
 	            <div>
-	            <p><%=follows.get(i).getAccData().getAccountName() %><p>
+	            <a href="AccountPostList.action?account_id=<%=follows.get(i).getAccData().getAccountId() %>"><p><%=follows.get(i).getAccData().getAccountName() %><p></a>
 	            <br>
 	            <a href="UnFollowExecute.action?acc=<%=follows.get(i).getAccData().getAccountId() %>&page=2"><p><font size="2">このアカウントのフォローを解除する</font></p></a>
 	           	<%

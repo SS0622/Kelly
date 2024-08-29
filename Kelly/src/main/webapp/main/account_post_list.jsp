@@ -31,61 +31,28 @@
   <div id="wrapper">
     <div id="main">
     <section id="point">
-      <summary><h2>画像を検索</h2></summary>
-    
-    
-    <form action="PostSearchExecute.action" method="get">
-    <div>
-        <label for="textbox" style="color: black;">検索ワード</label>
-        <input type="text" name="input_txt" id="textbox" value="${txtboxstr}">
-        <label for="order_select" style="color: black;">並び順</label>
-        <select name="order" id="order_select">
-            <option value="1" >投稿日時が新しい順</option>
-            <option value="2" >投稿日時が古い順</option>
-        </select>
-        <label for="mode_select" style="color: black;">検索方法</label>
-        <select name="mode" id="mode_select">
-            <option value="1" >タグOR検索</option>
-            <option value="2" >タグAND検索</option>
-            <option value="3" >タイトルOR検索</option>
-            <option value="4" >タイトルAND検索</option>
-            <option value="5" >キャプションOR検索</option>
-            <option value="6" >キャプションAND検索</option>
-        </select>
-    </div>
-        <div style="text-align: center;"><button id="search-button" style="font-size: 20px; width: 100px;">検索</button></div>
-    </form>
-    
-
-
-
-      <details open>
-        <summary>画像一覧</summary>
+      <summary><h2>${name}の投稿一覧</h2></summary>
         <h2>
             <%
-				List<Post> posts = (List<Post>) request.getAttribute("get_posts");
-				if (posts!=null&&posts.size()>=1) {%>
-					<p>検索結果 <%=posts.size() %>件</p>
-					<%
-		        	for(int i=0;i<posts.size();i++){
-		            %>
-		            <div>
-		            <hr>
-		            <p><a href="PostDetail.action?post_id=<%=posts.get(i).getPostID() %>">『<%=posts.get(i).getTitle() %>』</a></p>
-		            <p><font size="2">投稿者:<%=posts.get(i).getAccData().getAccountName() %></font></p>
-		            <img src="<%=posts.get(i).getBaseImg() %>" alt="img alt">
-					<p><font size="2"><%=posts.get(i).getCreateedAt() %></font></p>
-					
-					<br><p>以下デバッグ用情報。後で消すこと</p>
-					<p>投稿ID：<%=posts.get(i).getPostID() %></p>
-					<p>画像パス：<%=posts.get(i).getBaseImg() %></p>
-					</div>
-		            <%
-		            }
-		            %>
-		        <%
-		        }
-		        %>
+			List<Post> posts = (List<Post>) request.getAttribute("get_posts");
+			if (posts!=null&&posts.size()>=1) {
+			%>
+				<p><%=posts.size() %>件</p>
+				<%
+	        	for(int i=0;i<posts.size();i++){
+	            %>
+	            <div>
+	            <hr>
+	            <p><a href="PostDetail.action?post_id=<%=posts.get(i).getPostID() %>">『<%=posts.get(i).getTitle() %>』</a></p>
+	            <img src="<%=posts.get(i).getBaseImg() %>" alt="img alt">
+				<p><font size="2"><%=posts.get(i).getCreateedAt() %></font></p>
+				</div>
+	            <%
+	            }
+	            %>
+	        <%
+	        }
+	        %>
         </h2>
  
         <!-- <hr> -->

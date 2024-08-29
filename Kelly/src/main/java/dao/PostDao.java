@@ -342,7 +342,7 @@ public class PostDao extends Dao{
 		// 引数orderが"1"なら投稿日が新しい順、"2"なら古い順
 		if (order.equals("1")) {
 			TAGsql.append(" ORDER BY CREATED_AT DESC");
-		}else if(mode.equals("2")) {
+		}else if(order.equals("2")) {
 			TAGsql.append(" ORDER BY CREATED_AT ASC");
 		}
 		try{
@@ -433,5 +433,68 @@ public class PostDao extends Dao{
 			}
 		}
 		return true;
+	}
+	public ArrayList<Post> search2(String account_id) throws Exception{
+		// 返すための変数を用意
+		ArrayList<Post> postList = new ArrayList<>();
+		// コネクションの確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// リザルトセット
+		ResultSet rSet=null;
+		try{
+			//検索開始
+			statement=connection.prepareStatement("select POST_ID,ACCOUNT_ID,TAG_1,TAG_2,TAG_3,TAG_4,TAG_5,PICTURE_1,PICTURE_2,CAST(CREATED_AT AS VARCHAR) AS CREATED_AT,TITLE,CAPTION from POST WHERE ACCOUNT_ID=? ORDER BY CREATED_AT DESC");
+			statement.setString(1, account_id);
+			rSet=statement.executeQuery();
+			
+			//検索結果の整形
+			while(rSet.next()){
+				Post p = new Post();
+				AccountDao aDao = new AccountDao();
+				String[] tagstrs = new String[5];
+				p.setPostID(rSet.getInt("POST_ID"));
+				p.setAccID(rSet.getString("ACCOUNT_ID"));
+				tagstrs[0]=rSet.getString("TAG_1");
+				tagstrs[1]=rSet.getString("TAG_2");
+				tagstrs[2]=rSet.getString("TAG_3");
+				tagstrs[3]=rSet.getString("TAG_4");
+				tagstrs[4]=rSet.getString("TAG_5");
+				p.setImgTags(tagstrs);
+				p.setAlphaImg(rSet.getString("PICTURE_1"));
+				p.setBaseImg(rSet.getString("PICTURE_2"));
+				p.setTitle(rSet.getString("TITLE"));
+				p.setCaption(rSet.getString("CAPTION"));
+				p.setCreateedAt(rSet.getString("CREATED_AT"));
+				p.setAccData(aDao.get(rSet.getString("ACCOUNT_ID")));
+				//リストに追加
+				postList.add(p);
+			}
+		}
+		catch (Exception e){
+			throw e;
+		}
+		finally{
+			// プリペアードステートメントを閉じる
+			if (statement != null){
+				try{
+					statement.close();
+				}
+				catch(SQLException sqle){
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null){
+				try{
+					connection.close();
+				}
+				catch(SQLException sqle){
+					throw sqle;
+				}
+			}
+		}
+		return postList;
 	}
 }

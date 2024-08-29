@@ -45,7 +45,7 @@
 	            %>
 	            <hr>
 	            <div>
-	            <p><%=followers.get(i).getAccData().getAccountName() %><p>
+	            <a href="AccountPostList.action?account_id=<%=followers.get(i).getAccData().getAccountId() %>"><p><%=followers.get(i).getAccData().getAccountName() %><p></a>
 	            <br>
 				  	<%
 				  	if (fDao.get(accId, followers.get(i).getAccData().getAccountId())==null){
