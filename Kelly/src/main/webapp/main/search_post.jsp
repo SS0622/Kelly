@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
-<%@ page import="java.util.ArrayList,java.util.List,bean.Post" %>
+<%@ page import="java.util.ArrayList,java.util.List,bean.Post,java.util.Optional" %>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -65,6 +65,7 @@
             <%
 				List<Post> posts = (List<Post>) request.getAttribute("get_posts");
 				if (posts!=null&&posts.size()>=1) {%>
+					<p>検索結果 <%=posts.size() %>件</p>
 					<%
 		        	for(int i=0;i<posts.size();i++){
 		            %>

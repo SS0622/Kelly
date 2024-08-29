@@ -20,8 +20,8 @@ public class PostSearchExecuteAction extends Action{
 		
 		// 送信された入力の格納用
 		String inputTxt=""; // 入力された検索内容
-		String orderStr=""; // 選択された並び順
-		String modeStr=""; // 選択された検索方法
+		String orderStr="1"; // 選択された並び順
+		String modeStr="1"; // 選択された検索方法
 		
 		// 入力内容のセット
 		inputTxt=req.getParameter("input_txt");
@@ -48,11 +48,14 @@ public class PostSearchExecuteAction extends Action{
 		posts=pDao.search(tags,orderStr,modeStr);
 		System.out.println("検索結果⇒"+posts.size()+"件");
 		
+		int orderInt=Integer.parseInt(orderStr); // 送信用並び順
+		int modeInt=Integer.parseInt(modeStr); // 送信用検索方法
+		
 		// フォワード先へ送るデータをセット
 		req.setAttribute("get_posts", posts); // 取得したリスト
 		req.setAttribute("txtboxstr", inputTxt);
-		req.setAttribute("selected_order", orderStr);
-		req.setAttribute("selected_mode", modeStr);
+		req.setAttribute("selected_order", orderInt);
+		req.setAttribute("selected_mode", modeInt);
 		
 		// JSPへフォワード
 		req.getRequestDispatcher("search_post.jsp").forward(req, res);
