@@ -88,10 +88,10 @@
 					<br><p>以下デバッグ用情報。後で消すこと</p>
 					<p>投稿ID：<%=posts.get(i).getPostID() %></p>
 					<p>画像パス：<%=posts.get(i).getBaseImg() %></p>
+					</div>
 		            <%
 		            }
 		            %>
-		            </div>
 		        <%
 		        }
 		        %>
