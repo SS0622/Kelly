@@ -16,7 +16,7 @@
     <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_markup.js'></script>
     <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_kansuji.js'></script>
     <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_turtle.js'></script>
-    <link rel="icon" href="../picture/投稿.png">
+    <link rel="icon" href="../picture/favicon.png">
 </head>
 
 <body>
@@ -48,16 +48,18 @@
 			        <div class="paint_area">
 			            <br>
 			            <canvas class="paint_box" id="test_canvas" width=500 height=500 style="border: solid 3px #000000;"></canvas>
-			            <input type="button" id="pen1" value="極細モード">
-			            <input type="button" id="pen2" value="細モード">
-			            <input type="button" id="pen3" value="普通モード">
-			            <input type="button" id="pen4" value="太モード">
-			            <input type="button" id="pen5" value="極太モード">
-			            <input type="color" id="color_changer" value="#FFC200">
-			            <input type="button" id="fill_button" value="全体塗りつぶし">
+			            
+			            <input type="button" id="pen1" value="極細モード" class="pencilsize">
+			            <input type="button" id="pen2" value="細モード"  class="pencilsize">
+			            <input type="button" id="pen3" value="普通モード" class="pencilsize">
+			            <input type="button" id="pen4" value="太モード"  class="pencilsize">
+			            <input type="button" id="pen5" value="極太モード"  class="pencilsize">
+			            <input type="color" id="color_changer" value="#FFC200"  class="pencilsize">
+			            <input type="button" id="fill_button" value="全体塗りつぶし"  class="pencilsize">
+			            
 			        </div>            
 			            <br>
-			            <input type="button" id="end_button" value="完成">
+			            <input type="button" id="end_button" value="完成" style="color:f27000 ; border: solid 3px #000000;" class="pencilsize" >
 			            <br>
 			    </div>
 			    <input type="text" id="id_image" class="id_image" name="writing" hidden required>
@@ -65,17 +67,25 @@
                 <summary>画像のタイトル</summary>
                 <input type="text" name="title" value="title" style="width:300px; height: 30px; font-size:20px" maxlength="30">
                 <hr>
-                <summary>タグを設定して下さい ※5個まで設定可能</summary>
-                <label style="color: black;">項目 1: <input type="text" name="tags[]" maxlength="30"></label><br>
-                <label style="color: black;">項目 2: <input type="text" name="tags[]" maxlength="30"></label><br>
-                <label style="color: black;">項目 3: <input type="text" name="tags[]" maxlength="30"></label><br>
-                <label style="color: black;">項目 4: <input type="text" name="tags[]" maxlength="30"></label><br>
-                <label style="color: black;">項目 5: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <summary>タグをとコメントの設定</summary>
+                <p style="color: black;">タグ</p>
+                <label style="color: black;">タグ 1: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <label style="color: black;">タグ 2: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <label style="color: black;">タグ 3: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <label style="color: black;">タグ 4: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <label style="color: black;">タグ 5: <input type="text" name="tags[]" maxlength="30"></label><br>
                 <p style="color: black;">コメント</p>
                 <textarea type="text" name="caption" maxlength="150" style="width: 300px; height: 200px"></textarea><br>
                 <br>
-                <summary class="redstr">絵描きエリアの「完成」ボタンをクリックしていないと投稿されません。</summary>
-                <input type="submit" value="アップロード">
+                <p style="font-size:20px; color:red;">絵描きエリアの「完成」ボタンをクリックしていないと投稿されません。</p>
+                <input type="submit" value="アップロード" 
+                	style="background: #2299ff;
+					  border-bottom: 2px solid white;
+					  border: none;
+					  height: 28px;
+					  color: white;
+					  transition: border-color 0.3s;
+					  width: 20%;">>
             </form>
         </div>
  
@@ -115,7 +125,16 @@
 
 
 <style>
-
+	.pencilsize{
+		background: #2299ff;
+		border-bottom: 2px solid white;
+		border: none;
+		height: 28px;
+		color: white;
+		transition: border-color 0.3s;
+		width: 30%;">
+	}
+	
     @charset "utf-8";
     body {
       color: rgb(255, 255, 255);

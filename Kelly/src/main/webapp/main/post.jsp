@@ -39,7 +39,7 @@
             <!-- 画像ファイルを選択するための入力フォーム -->
             <form action="PostFile" method="post" enctype="multipart/form-data">
             	
-                <summary>画像を選択してください</summary>
+                <summary>画像選択</summary>
                 
                 <input type="file" name="picture2" accept="image/*" 
 	                class="fileselectbutton" >
@@ -48,12 +48,13 @@
                 <summary>画像のタイトル</summary>
                 <input type="text" name="title" value="title" style="width:300px; height: 30px; font-size:20px" maxlength="30">
                 <hr>
-                <summary>タグを設定して下さい ※5個まで設定可能</summary>
-                <label style="color: black;">項目 1: <input type="text" name="tags[]" maxlength="30"></label><br>
-                <label style="color: black;">項目 2: <input type="text" name="tags[]" maxlength="30"></label><br>
-                <label style="color: black;">項目 3: <input type="text" name="tags[]" maxlength="30"></label><br>
-                <label style="color: black;">項目 4: <input type="text" name="tags[]" maxlength="30"></label><br>
-                <label style="color: black;">項目 5: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <summary>タグとコメントの設定</summary>
+                <p style="color: black;">タグ</p>
+                <label style="color: black;">タグ 1: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <label style="color: black;">タグ 2: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <label style="color: black;">タグ 3: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <label style="color: black;">タグ 4: <input type="text" name="tags[]" maxlength="30"></label><br>
+                <label style="color: black;">タグ 5: <input type="text" name="tags[]" maxlength="30"></label><br>
                 <p style="color: black;">コメント</p>
                 <textarea type="text" name="caption" maxlength="150" style="width: 300px; height: 200px"></textarea><br>
                 <br>
