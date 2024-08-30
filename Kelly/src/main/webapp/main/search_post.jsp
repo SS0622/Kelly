@@ -72,26 +72,26 @@
 
 
 
-      <details open>
+      <!-- <details open> -->
         <summary>画像一覧</summary>
-        <h2>
+        <h2 style="color:black;">
             <%
 				List<Post> posts = (List<Post>) request.getAttribute("get_posts");
 				if (posts!=null&&posts.size()>=1) {%>
-					<p>検索結果 <%=posts.size() %>件</p>
+					<p style="color:black;">検索結果 <%=posts.size() %>件</p>
 					<%
 		        	for(int i=0;i<posts.size();i++){
 		            %>
 		            <div>
 		            <hr>
-		            <p><a href="PostDetail.action?post_id=<%=posts.get(i).getPostID() %>">『<%=posts.get(i).getTitle() %>』</a></p>
-		            <p><font size="2">投稿者:<%=posts.get(i).getAccData().getAccountName() %></font></p>
+		            <p style="color:black;"><a style="color:black;" href="PostDetail.action?post_id=<%=posts.get(i).getPostID() %>">『<%=posts.get(i).getTitle() %>』</a></p>
+		            <p style="color:black;"><font size="2">投稿者:<%=posts.get(i).getAccData().getAccountName() %></font></p>
 		            <img src="<%=posts.get(i).getBaseImg() %>" alt="img alt">
-					<p><font size="2"><%=posts.get(i).getCreateedAt() %></font></p>
+					<p style="color:black;"><font size="2"><%=posts.get(i).getCreateedAt() %></font></p>
 					
-					<br><p>以下デバッグ用情報。後で消すこと</p>
-					<p>投稿ID：<%=posts.get(i).getPostID() %></p>
-					<p>画像パス：<%=posts.get(i).getBaseImg() %></p>
+					<%-- <br><p style="color:black;">以下デバッグ用情報。後で消すこと</p>
+					<p style="color:black;">投稿ID：<%=posts.get(i).getPostID() %></p>
+					<p style="color:black;">画像パス：<%=posts.get(i).getBaseImg() %></p> --%>
 					</div>
 		            <%
 		            }
@@ -102,7 +102,7 @@
         </h2>
  
         <!-- <hr> -->
-      </details>
+      <!-- </details> -->
 
     </div>
         <!--サイド-->

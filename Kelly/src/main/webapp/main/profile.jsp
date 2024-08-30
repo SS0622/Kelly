@@ -41,10 +41,16 @@
             <form action="Profile" method="post" enctype="multipart/form-data">
             	<% Account account = (Account)request.getAttribute("account"); %>
          		<img id="imagePreview" src="<%=account.getIconPath() %>" alt="選択された画像がここに表示されます" style="display:none; max-width: 300px; max-height: 300px;">
-                <label>icon <input type="file" name="icon" id="imageInput" accept="image/*"></label>
+                <label style="color:black;">icon <input type="file" name="icon" id="imageInput" accept="image/*"></label>
 
-                <label>name <input type="text" name="name" value="<%=account.getAccountName() %>"></label><br>
-                <input type="submit" value="変更">
+                <label style="color:black;">name <input type="text" name="name" value="<%=account.getAccountName() %>"></label><br>
+                <input style="color:black;" type="submit" value="変更" style="background: #2299ff;
+					  border-bottom: 2px solid white;
+					  border: none;
+					  height: 28px;
+					  color: white;
+					  transition: border-color 0.3s;
+					  width: 100px;">
             </form>
         </div>
  
