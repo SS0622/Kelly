@@ -8,6 +8,7 @@
     <title>ログアウト確認</title>
     <!-- 外部CSSファイルへのリンク -->
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../picture/favicon.png">
 </head>
 <body>
     <div class="form-wrapper">
