@@ -11,14 +11,18 @@ public class profileAction extends Action {
 	public void execute(HttpServletRequest req,HttpServletResponse res)throws Exception{
 		HttpSession session = req.getSession();
 		Account account = (Account)session.getAttribute("user");
-		
-		String url = "";
-		
-		url = "profile.jsp";
-		
-		req.setAttribute("account", account);
-		
-		req.getRequestDispatcher(url).forward(req, res);
+		if (account!=null) {
+			String url = "";
+			
+			url = "profile.jsp";
+			
+			req.setAttribute("account", account);
+			
+			req.getRequestDispatcher(url).forward(req, res);
+		}else{
+			System.out.println("未ログインを確認");
+			res.sendRedirect("Login.action");
+		}
 	}
 }
 

@@ -10,14 +10,16 @@ import tool.Action;
 public class DrawPostAction extends Action{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		
 //		#session関連
 		HttpSession session = req.getSession();
 		Account account = (Account)session.getAttribute("user");
-
-		req.setAttribute("acc", account);
-		
-		req.getRequestDispatcher("draw_post.jsp").forward(req, res);
+		if (account!=null) {
+			req.setAttribute("acc", account);
+			req.getRequestDispatcher("draw_post.jsp").forward(req, res);
+		}else{
+			System.out.println("未ログインを確認");
+			res.sendRedirect("Login.action");
+		}
 	}
 
 }

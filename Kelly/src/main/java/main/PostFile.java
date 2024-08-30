@@ -28,56 +28,59 @@ public class PostFile extends HttpServlet {
 //		#session関連
 		HttpSession session = req.getSession();
 		Account account = (Account)session.getAttribute("user");
-		
-		Post post = new Post();
-		Part picture1;
-		Part picture2;
-		String title = req.getParameter("title");
-		String caption = req.getParameter("caption");
-        String[] tags = req.getParameterValues("tags[]");
-        
-	    try {
-			picture2 = req.getPart("picture2");
-	        if (picture2 == null) {
-	            req.getRequestDispatcher("post.jsp").forward(req,  res);
-	        }
+		if (account!=null) {
+			Post post = new Post();
+			Part picture2;
+			String title = req.getParameter("title");
+			String caption = req.getParameter("caption");
+	        String[] tags = req.getParameterValues("tags[]");
 	        
-	    } catch (IllegalStateException e) {
-	        throw new ServletException("Multipart configuration is not provided.", e);
-	    } catch (Exception e) {
-	        throw new ServletException("File upload failed.", e);
-	    }
-		
-		// UUID を生成してファイル名に追加
-		String originalFileName2 = picture2.getSubmittedFileName();
-		String uniqueFileName2= UUID.randomUUID().toString() + "_" + originalFileName2;
-		
-		// ファイルの保存先
-		Path uploadPath = Paths.get("/home/lg/tomcat/tomcat10/webapps/Kelly/upload");//
-									// /home/lg/tomcat/tomcat10/webapps/Kelly/upload
-									// C:/Users/ebinuma/git/Kelly2/Kelly/src/main/webapp/upload
-        // 保存先ディレクトリが存在しない場合は作成
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
-        }
+		    try {
+				picture2 = req.getPart("picture2");
+		        if (picture2 == null) {
+		            req.getRequestDispatcher("post.jsp").forward(req,  res);
+		        }
+		        
+		    } catch (IllegalStateException e) {
+		        throw new ServletException("Multipart configuration is not provided.", e);
+		    } catch (Exception e) {
+		        throw new ServletException("File upload failed.", e);
+		    }
+			
+			// UUID を生成してファイル名に追加
+			String originalFileName2 = picture2.getSubmittedFileName();
+			String uniqueFileName2= UUID.randomUUID().toString() + "_" + originalFileName2;
+			
+			// ファイルの保存先
+			Path uploadPath = Paths.get("/home/lg/tomcat/tomcat10/webapps/Kelly/upload");//
+										// /home/lg/tomcat/tomcat10/webapps/Kelly/upload
+										// C:/Users/ebinuma/git/Kelly2/Kelly/src/main/webapp/upload
+	        // 保存先ディレクトリが存在しない場合は作成
+	        if (!Files.exists(uploadPath)) {
+	            Files.createDirectories(uploadPath);
+	        }
 
-        // 保存先ファイルの完全なパスを生成
-        Path filePath2 = uploadPath.resolve(uniqueFileName2);
+	        // 保存先ファイルの完全なパスを生成
+	        Path filePath2 = uploadPath.resolve(uniqueFileName2);
 
-        // ファイルを指定されたパスに保存
-        picture2.write(filePath2.toString());
-	
-		post.setAccID(account.getAccountId());
-		post.setAlphaImg("../upload/");
-		post.setBaseImg("../upload/"+uniqueFileName2.toString());
-		post.setTitle(title);
-		post.setCaption(caption);
-		post.setImgTags(tags);
-
-		req.setAttribute("post", post);
+	        // ファイルを指定されたパスに保存
+	        picture2.write(filePath2.toString());
 		
-        RequestDispatcher dispatcher = req.getRequestDispatcher("PostExecute.action");
-        dispatcher.forward(req, res);
+			post.setAccID(account.getAccountId());
+			post.setAlphaImg("../upload/");
+			post.setBaseImg("../upload/"+uniqueFileName2.toString());
+			post.setTitle(title);
+			post.setCaption(caption);
+			post.setImgTags(tags);
+
+			req.setAttribute("post", post);
+			
+	        RequestDispatcher dispatcher = req.getRequestDispatcher("PostExecute.action");
+	        dispatcher.forward(req, res);
+		}else{
+			System.out.println("未ログインを確認");
+			res.sendRedirect("Login.action");
+		}
     }
 		
 }
