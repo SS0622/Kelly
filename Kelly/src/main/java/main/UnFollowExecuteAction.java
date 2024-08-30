@@ -12,28 +12,33 @@ public class UnFollowExecuteAction extends Action{
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
 		Account account = (Account)session.getAttribute("user");
-		System.out.println("フォロー解除");
+		if (account!=null) {
+			System.out.println("フォロー解除");
 
-		// 変数群を作成
-		FollowDao fDao=new FollowDao();
-		String accId=""; // 対象のアカウントID
-		String pageType=""; // 戻すページの種類
-		String postId=""; // 戻すページが画像詳細であった場合の投稿ID
-		
-		// セット
-		accId=req.getParameter("acc");
-		pageType=req.getParameter("page");
-		postId=req.getParameter("post");
-		
-		fDao.delete(account.getAccountId(), accId);
-		
-		if (pageType.equals("1")) {
-			req.setAttribute("post_id",postId);
-			req.getRequestDispatcher("PostDetail.action").forward(req, res);
-		}else if (pageType.equals("2")) {
-			req.getRequestDispatcher("FollowList.action").forward(req, res);
-		}else if (pageType.equals("3")) {
-			req.getRequestDispatcher("FollowerList.action").forward(req, res);
+			// 変数群を作成
+			FollowDao fDao=new FollowDao();
+			String accId=""; // 対象のアカウントID
+			String pageType=""; // 戻すページの種類
+			String postId=""; // 戻すページが画像詳細であった場合の投稿ID
+			
+			// セット
+			accId=req.getParameter("acc");
+			pageType=req.getParameter("page");
+			postId=req.getParameter("post");
+			
+			fDao.delete(account.getAccountId(), accId);
+			
+			if (pageType.equals("1")) {
+				req.setAttribute("post_id",postId);
+				req.getRequestDispatcher("PostDetail.action").forward(req, res);
+			}else if (pageType.equals("2")) {
+				req.getRequestDispatcher("FollowList.action").forward(req, res);
+			}else if (pageType.equals("3")) {
+				req.getRequestDispatcher("FollowerList.action").forward(req, res);
+			}
+		}else{
+			System.out.println("未ログインを確認");
+			res.sendRedirect("Login.action");
 		}
 	}
 }
