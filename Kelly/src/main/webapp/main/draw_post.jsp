@@ -22,7 +22,7 @@
 
 <script type="text/javascript">
         function alert{
-        	alert("完成！設定に進んでください");
+        	alert('完成！設定に進んでください');
         };
 </script>
     
