@@ -50,6 +50,10 @@
 			        <div class="paint_area" >
 			            <br>
 			            <canvas class="paint_box" id="test_canvas" width=500 height=500 style="border: solid 3px #000000;"></canvas>
+			            
+			        <div style="display:flex;">
+			        <p style="color: black; font-size:13px;">※画面の再読み込みでキャンバスの初期化ができます</p>
+			        </div>
 			        <div style="display:flex;">
 			            <input type="button" id="pen1" value="極細モード" class="pencilsize">
 			            <input type="button" id="pen2" value="細モード"  class="pencilsize">
@@ -63,8 +67,15 @@
 			            
 			            <input type="button" id="fill_button" value="全体塗りつぶし"  class="pencilsize">
 			            &nbsp;&nbsp;
-			            <div  style="width:40px;"><input type="color" id="color_changer" value="#FFC200"  class="pencilsize"></div>
-			            <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+			            <div  style="width:40px;"><input type="color" id="color_changer" value="#FFC200" 
+			            style="background: black;
+							border-bottom: 2px solid white;
+							border: none;
+							height: 28px;
+							color: white;
+							transition: border-color 0.3s;
+							width: 100px;"></div>
+			            
 			        </div>
 			        <hr style="border:none;">
 			        <div style="display:flex;">
@@ -526,7 +537,7 @@
         完成ボタンをクリックした時には、
         　　取得画像＝描画データURL変換。
         　　「#id_image」に、「｛取得画像｝」をテキスト設定。
-        　　「完了しました！続いて設定をしてください！」と言う。
+        　　「完了しました！続いてタイトル等の設定をしてください！」と言う。
         ここまで。
 </script>
 <%-- <%@include file="../common/footer.html"%> --%>
