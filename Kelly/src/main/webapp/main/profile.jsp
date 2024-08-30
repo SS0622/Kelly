@@ -44,7 +44,7 @@
                 <!-- <label style="color:black;">icon <input type="file" name="icon" id="imageInput" accept="image/*"></label> -->
 
                 <label style="color:black;">name <input type="text" name="name" value="<%=account.getAccountName() %>"></label><br>
-                <input style="color:black;" type="submit" value="変更" style="background: #2299ff;
+                <input type="submit" value="変更" style="background: #2299ff;
 					  border-bottom: 2px solid white;
 					  border: none;
 					  height: 28px;
