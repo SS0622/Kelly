@@ -65,7 +65,7 @@
 					  height: 28px;
 					  color: white;
 					  transition: border-color 0.3s;
-					  width: 20%;">
+					  width: 100px"/>
             </form>
         </div>
  

@@ -19,6 +19,15 @@
     <link rel="icon" href="../picture/favicon.png">
 </head>
 
+
+<script type="text/javascript">
+        function alert{
+        	alert("完成！設定に進んでください");
+        };
+</script>
+    
+
+
 <body>
 
   <!--ヘッダー-->
@@ -60,10 +69,22 @@
 			        <div style="display:flex;">
 			            
 			            <input type="button" id="fill_button" value="全体塗りつぶし"  class="pencilsize">
-			            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			            &nbsp;&nbsp;
 			            <div  style="width:40px;"><input type="color" id="color_changer" value="#FFC200"  class="pencilsize"></div>
-			            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			            <div><input type="button" id="end_button" value="完成" style="color:f27000 ; border: solid 3px #000000;" class="pencilsize" ></div>
+			            <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+			        </div>
+			        <hr style="border:none;">
+			        <div style="display:flex;">
+			            <div><input type="button" id="end_button" value="完成" onclick="alert()"
+			            		style="; 
+			            			border:  3px #000000; 
+			            			background: #f27000;
+									border-bottom: 2px solid white;
+									
+									height: 28px;
+									color: white;
+									transition: border-color 0.3s;
+									width: 100px;"></div>
 			        </div>
 			        </div>
 			    </div>
@@ -90,7 +111,7 @@
 					  height: 28px;
 					  color: white;
 					  transition: border-color 0.3s;
-					  width: 20%;">>
+					  width: 100px;"/>
             </form>
         </div>
  
@@ -129,6 +150,7 @@
 </html>
 
 
+    
 <style>
 	.pencilsize{
 		background: #2299ff;
