@@ -29,6 +29,7 @@ public class MainAction extends Action {
 			url = "main.jsp";
 			
 			req.setAttribute("postList", postList);
+			req.setAttribute("account", account);
 			
 			req.getRequestDispatcher(url).forward(req, res);
 		}else{
