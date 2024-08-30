@@ -143,4 +143,47 @@ public class AccountDao extends Dao {
 		}
 		return true;
 	}
+	public boolean check(String accountId,String mail) throws Exception {
+		boolean answer=false;
+		// コネクションの確立
+		Connection connection = getConnection();
+		
+		PreparedStatement statement = null;
+		
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select * from ACCOUNT where (account_id=? or MAIL=?) and withdrawal=FALSE");
+			// プリペアードステートメントにアカウントIDをバインド
+			statement.setString(1, accountId);
+			statement.setString(2,mail);
+			// プリペアードステートメントを実行
+			ResultSet rSet = statement.executeQuery();
+			//アカウントが存在していた場合false
+			if (rSet.next()) {
+				answer=false;
+			}else {
+				answer=true;
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		return answer;
+	}
 }

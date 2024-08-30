@@ -21,7 +21,7 @@ public class SignUpExecuteAction extends Action {
 		String mail = "";
 		String accountName = "";
 		AccountDao accountDao = new AccountDao();
-		Account checkAccount = null;
+		boolean checkAccount = false;
 		Account saveAccount = new Account();
 		Account successAccount = null;
 		String error = "";
@@ -31,15 +31,17 @@ public class SignUpExecuteAction extends Action {
 		accountName = req.getParameter("account_name");
 		mail = req.getParameter("email");
 		
-		checkAccount = accountDao.get(id);
+		checkAccount = accountDao.check(id,mail);
 		
-		if (checkAccount == null) {
+		if (checkAccount == true) {
+			System.out.println("作成許可");
 			saveAccount.setAccountId(id);
 			saveAccount.setPassword(password);
 			saveAccount.setAccountName(accountName);
 			saveAccount.setMail(mail);
 			
 			System.out.println(saveAccount.getAccountId());
+			System.out.println(saveAccount.getAccountName());
 			
 			flag = accountDao.save(saveAccount);
 			
@@ -57,7 +59,8 @@ public class SignUpExecuteAction extends Action {
 				req.getRequestDispatcher(url).forward(req, res);
 			}
 		} else {
-			error = "存在するアカウントIDです";
+			System.out.println("作成却下");
+			error = "ユーザーIDもしくはメールアドレスが既存です";
 			req.setAttribute("error", error);
 			url = "new_account.jsp";
 			req.getRequestDispatcher(url).forward(req, res);

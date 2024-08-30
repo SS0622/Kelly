@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<% 
+String error = (String) request.getAttribute("error");
+%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -12,9 +15,20 @@
     <div class="form-wrapper">
         <h1>新規アカウント登録</h1>
         <form action="SignUpExecute.action" method="post">
+        	<% 
+        	if (error!=""){ 
+        	%>
+        		<div><font color="red">${error}</font></div>
+        	<%
+        	}
+        	%>
             <div class="form-item">
                 <label for="userId">ユーザーID</label>
                 <input id="userId" type="text" name="userId" required="required" placeholder="ユーザーID">
+            </div>
+            <div class="form-item">
+                <label for="account_name">ユーザー名</label>
+                <input id="account_name" type="text" name="account_name" required="required" placeholder="ユーザー名">
             </div>
             <div class="form-item">
                 <label for="email">メールアドレス:</label>
