@@ -7,7 +7,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>新規投稿</title>
+    <title>アカウント名変更</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="test.css">
     <link rel="shortcut icon" href="picture/pic1.png">
@@ -30,7 +30,7 @@
   <div id="wrapper">
     <div id="main">
     <section id="point">
-      <summary><h2>画像を投稿</h2></summary>
+      <summary><h2>アカウント名変更</h2></summary>
     
     
     <!-- <details open>
@@ -40,8 +40,8 @@
             <!-- 画像ファイルを選択するための入力フォーム -->
             <form action="Profile" method="post" enctype="multipart/form-data">
             	<% Account account = (Account)request.getAttribute("account"); %>
-         		<img id="imagePreview" src="<%=account.getIconPath() %>" alt="選択された画像がここに表示されます" style="display:none; max-width: 300px; max-height: 300px;">
-                <label style="color:black;">icon <input type="file" name="icon" id="imageInput" accept="image/*"></label>
+<%--          		<img id="imagePreview" src="<%=account.getIconPath() %>" alt="選択された画像がここに表示されます" style="display:none; max-width: 300px; max-height: 300px;"> --%>
+                <!-- <label style="color:black;">icon <input type="file" name="icon" id="imageInput" accept="image/*"></label> -->
 
                 <label style="color:black;">name <input type="text" name="name" value="<%=account.getAccountName() %>"></label><br>
                 <input style="color:black;" type="submit" value="変更" style="background: #2299ff;
