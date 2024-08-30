@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="test.css">
     <link rel="shortcut icon" href="picture/pic1.png">
 
-    <link rel="icon" href="../picture/検索.png">
+    <link rel="icon" href="../picture/favicon.png">
 </head>
 
 <body>

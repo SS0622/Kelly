@@ -3,6 +3,7 @@
 <%@include file="../common/header.html" %>
 <title>LegalGraffiti -キャンバス-</title>
 <link rel="stylesheet" href="css/canvas.css"/>
+<link rel="icon" href="../picture/favicon.png">
 </head>
 <body>
 <%--メッセージの出力  --%>

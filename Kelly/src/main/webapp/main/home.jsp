@@ -2,7 +2,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <%@include file="../common/header.html" %>
 <title>LegalGraffiti -ペイント:ホーム-</title>
-
+<link rel="icon" href="../picture/favicon.png">
 </head>
 <body>
 <div id="main-content">
