@@ -18,13 +18,6 @@
     <script defer src='https://nadesi.com/v3/cdn.php?v=3.4.21&f=release/plugin_turtle.js'></script>
     <link rel="icon" href="../picture/favicon.png">
 </head>
-
-
-<script type="text/javascript">
-        function alert{
-        	alert('完成！設定に進んでください');
-        };
-</script>
     
 
 
@@ -75,7 +68,7 @@
 			        </div>
 			        <hr style="border:none;">
 			        <div style="display:flex;">
-			            <div><input type="button" id="end_button" value="完成" onclick="alert()"
+			            <div><input type="button" id="end_button" value="完成"
 			            		style="; 
 			            			border:  3px #000000; 
 			            			background: #f27000;
@@ -532,7 +525,8 @@
         
         完成ボタンをクリックした時には、
         　　取得画像＝描画データURL変換。
-        　　「#id_image」に、「｛取得画像｝」をテキスト設定
+        　　「#id_image」に、「｛取得画像｝」をテキスト設定。
+        　　「完了しました！続いて設定をしてください！」と言う。
         ここまで。
 </script>
 <%-- <%@include file="../common/footer.html"%> --%>
