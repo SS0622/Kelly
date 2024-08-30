@@ -38,7 +38,7 @@
         <div class="container">
             
             <!-- 画像ファイルを選択するための入力フォーム -->
-            <form action="Profile" method="post" enctype="multipart/form-data">
+            <form action="Profile" method="post">
             	<% Account account = (Account)request.getAttribute("account"); %>
 <%--          		<img id="imagePreview" src="<%=account.getIconPath() %>" alt="選択された画像がここに表示されます" style="display:none; max-width: 300px; max-height: 300px;"> --%>
                 <!-- <label style="color:black;">icon <input type="file" name="icon" id="imageInput" accept="image/*"></label> -->
